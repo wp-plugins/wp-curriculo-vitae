@@ -1,5 +1,5 @@
 === WP-Curriculo Vitae ===
-Contributors: williamluis, caso seja mais de um, separe com vírgula
+Contributors: williamluis
 Donate link: http://url para doação, caso alguém queira colaborar com o projeto
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
 Requires at least: 3.5
