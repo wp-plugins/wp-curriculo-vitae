@@ -1,6 +1,5 @@
 === WP-Curriculo Vitae ===
-Contributors: williamluis, caso seja mais de um, separe com vírgula
-Donate link: http://url para doação, caso alguém queira colaborar com o projeto
+Contributors: Williamluis
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
 Requires at least: 3.5
 Tested up to: 3.5.1
@@ -9,7 +8,7 @@ License: GPLv2
 
 == Description ==
 
-O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, possibilitando subir um arquivo de currículo, onde que esse cadastro vai se torna publico.
+O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
 Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
 Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
 
@@ -32,7 +31,7 @@ Obs. Os widget são apenas para a versão paga.
 
 = É possível seugerir modificações e idéias para este plugin? =
 
-Claro que pode, para isso acesse o link [WP-Currículo Vitae](http://url-do-plugin#comments)
+Claro que pode, para isso acesse o link [Wiliamluis - WP-Currículo Vitae](http://wiliamluis.wordpress.com/plugin/)
 
 == Changelog ==
 
