@@ -1,6 +1,5 @@
 === WP-Curriculo Vitae ===
-Contributors: williamluis
-Donate link: http://url para doação, caso alguém queira colaborar com o projeto
+Contributors: Williamluis
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
 Requires at least: 3.5
 Tested up to: 3.5.1
@@ -32,7 +31,7 @@ Obs. Os widget são apenas para a versão paga.
 
 = É possível seugerir modificações e idéias para este plugin? =
 
-Claro que pode, para isso acesse o link [WP-Currículo Vitae](http://url-do-plugin#comments)
+Claro que pode, para isso acesse o link [Wiliamluis - WP-Currículo Vitae](http://wiliamluis.wordpress.com/plugin/)
 
 == Changelog ==
 
