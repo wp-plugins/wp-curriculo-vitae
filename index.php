@@ -24,15 +24,16 @@ register_activation_hook( __FILE__, 'ewp_install_hook' );
 
 register_deactivation_hook( __FILE__, 'ewp_unistall_hook' );
 
+/*
 function ewp_install_hook() {
   // Vamos testar a versão do PHP e do WordPress
   // caso as versões sejam antigas, desativamos
   // o nosso plugin.
-  if ( version_compare( PHP_VERSION, '5.2.1', '<' )
-    or version_compare( get_bloginfo( 'version' ), '3.3', '<' ) ) {
+  if ( version_compare( PHP_VERSION, '5.', '<' )
+    or version_compare( get_bloginfo( 'version' ), '3.5', '<' ) ) {
       deactivate_plugins( basename( __FILE__ ) );
   }
-}
+}*/
 
 function ewp_unistall_hook(){
 	include_once( plugin_dir_path( __FILE__ ) . 'uninstall.php' );
