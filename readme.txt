@@ -21,20 +21,20 @@ Na Pr&oacute;pria lista pode buscar um nome ou uma especifica&ccedil;&atilde;o, 
 
 == Installation ==
 
-1. Subir o arquivo zipado para o diretório '/wp-content/plugins/'
+1. Subir o arquivo zipado para o diret&oacute;rio '/wp-content/plugins/'
 2. Ativar o aplicativo
-3. Crie uma páginas colocando o shortcode e publique
+3. Crie uma p&aacute;ginas colocando o shortcode e publique
 
 
 == Frequently Asked Questions ==
 
-= É possível seugerir modificações e idéias para este plugin? =
+= &Eacute; poss&iacute;vel seugerir modifica&ccedil;&otilde;es e id&eacute;ias para este plugin? =
 
-Claro que pode, para isso acesse o link [Wiliamluis - WP-Currículo Vitae](http://wiliamluis.wordpress.com/plugin/)
+Claro que pode, para isso acesse o link [Wiliamluis - WP-Curr&iacute;culo Vitae](http://wiliamluis.wordpress.com/plugin/)
 
 == Changelog ==
 
 = 1.0 =
-* Versão teste
+* Vers&atilde;o teste
 
 == Screenshots ==
