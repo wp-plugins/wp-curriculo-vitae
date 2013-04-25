@@ -29,9 +29,10 @@ function delete($id){
 	echo "<script>location.href='".$path."'</script>";
 }
 
+
 wp_enqueue_style( "bootstrap", plugins_url('css/bootstrap.css', __FILE__));
 wp_enqueue_style( "bootstrapresponsive", plugins_url('css/bootstrap-responsive.css', __FILE__));
-wp_enqueue_script( 'jqueryaba', plugins_url('js/jquery.min.js', __FILE__) );
+wp_enqueue_script('jquery');
 ?>
 <div class="wrap">
   <?php screen_icon(); ?>
@@ -51,71 +52,10 @@ wp_enqueue_script( 'jqueryaba', plugins_url('js/jquery.min.js', __FILE__) );
 		  div#caixa ul#conteudos li {display: inline-block; width: 758px; margin: 10px 20px 10px 20px; padding: 0; overflow: auto;}
 			
 		</style>
-        
-        <script type="text/javascript">
-        
-        	/* Função que carrega script das abas */
-        
-        	$.abasSimples = function ()
-        	{
-        	
-        		/* Guarda IDs dos elementos */
-        	
-        		var abas = 'p#abas';
-        		var conteudos = 'ul#conteudos';
-        		
-        		/* Oculta todas as abas */
-        		
-        		$(conteudos + ' li').hide();
-        		
-        		/* Exibe a primeira aba */
-        		
-				<?php if($msg==3){  ?>
-					$(conteudos + ' #aba2').show();
-				<?php }else{ ?>
-        			$(conteudos + ' li:first-child').show();
-        		<?php } ?>
-        		/* Quando uma aba for clicada */
-        		
-        		$(abas + ' a').click(function()
-        		{
-        		
-        			/* Remove todas as classes de todas as abas */
-        		
-        			$(abas + ' a').removeClass('selected');
-        			
-        			/* Acrescenta uma classe CSS marcando visualmente a aba como selecionada */
-        			
-        			$(this).addClass('selected');
-        			
-        			/* Oculta todas as abas abertas */
-        			
-        			$(conteudos + ' li').hide();
-        			
-        			/* Exibe a aba que foi clicada */
-        			
-        			$(conteudos +  ' ' + $(this).attr('href')).show();
-        			
-        			/* Fim :D */
-        			
-        			return false;
-        			
-        		}); 
-        		
-        	};
-        	
-        	/* Quando o documento estiver carregado… */
 
-			$(document).ready(function()
-			{
-			
-				/* Carrega a função das abas */
-				
-				$.abasSimples();
-			
-			});
-			
-		</script>
+        	<?php
+				wp_enqueue_script('script2JS', plugins_url('js/script2.js', __FILE__));
+			?>
   
   <div id="caixa">
     	
