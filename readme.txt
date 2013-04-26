@@ -17,7 +17,7 @@ Na Pr&oacute;pria lista pode buscar um nome ou uma especifica&ccedil;&atilde;o, 
 *Use o widget WP-CV para facilitar as busca do cadastrados n&atilde;o precisando abrir a p&aacute;gina de listagem, para ter um bom funcionamento dessa widget, precisa colocar o endere&ccedil;o da p&aacute;gina de listagem.
 *Use widget WP-CV para os cadastrados poder fazer login para poderem alterar seu cadastro.
   
-  Obs. Os widget s&atilde;o apenas para a vers&atilde;o paga.
+*Obs. Os widget s&atilde;o apenas para a vers&atilde;o paga.
 
 == Installation ==
 
