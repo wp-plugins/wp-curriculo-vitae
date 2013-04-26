@@ -12,12 +12,12 @@ O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissional do usu
 Tera uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
 Na Propria lista pode buscar um nome ou uma especificacao, facilitando a busca.
 
-*Para fazer o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**
-*Para criar a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**
-*Use o widget WP-CV para facilitar as busca do cadastrados nao precisando abrir a pagina de listagem, para ter um bom funcionamento dessa widget, precisa colocar o endereco da pagina de listagem.
-*Use widget WP-CV para os cadastrados poder fazer login para poderem alterar seu cadastro.
+1. Para fazer o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**
+2. Para criar a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**
+3. Use o widget WP-CV para facilitar as busca do cadastrados nao precisando abrir a pagina de listagem, para ter um bom funcionamento dessa widget, precisa colocar o endereco da pagina de listagem.
+4. Use widget WP-CV para os cadastrados poder fazer login para poderem alterar seu cadastro.
   
-*Obs. Os widget sao apenas para a versao paga.
+Obs. Os widget sao apenas para a versao paga.
 
 == Installation ==
 
