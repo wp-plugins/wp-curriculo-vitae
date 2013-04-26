@@ -35,6 +35,9 @@ Claro que pode, para isso acesse o link [Wiliamluis - WP-Curr&iacute;culo Vitae]
 == Changelog ==
 
 = 1.0 =
-* Vers&atilde;o teste
+*Essa vers&atilde;o vem com dois  shortcode:
+***[formCadastro]** para criar um formul&aacute;rio de cadastro;
+***[listCurriculos]** para criar uma lista dos cadastrados.
+*Um painel que est&aacute; em ferramentas Configura&ccedil;&otilde;es-&gt;WP-Curr&iacute;culo Vitae, onde tem as informa&ccedil;&otilde;es do plugin e um email para suporte, uma lista com todos os registros cadastrado, com as op&ccedil;&otilde;es para alterar registro e deletar o mesmo.
 
 == Screenshots ==
