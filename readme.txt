@@ -6,6 +6,8 @@ Tested up to: 3.5.1
 Stable tag: 3.5
 License: GPLv2
 
+O *WP-Curriculo Vitae*, crie um banco de dados de curr&iacute;culos.
+
 == Description ==
 
 O *WP-Curriculo Vitae* possibilita o cadastro de informa&ccedil;&otilde;es profissional do usu&aacute;rio, onde que esse cadastro vai se torna publico.
