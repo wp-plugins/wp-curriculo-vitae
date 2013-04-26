@@ -39,8 +39,8 @@ Claro que pode, para isso acesse o link [Wiliamluis - WP-Curr&iacute;culo Vitae]
 
 = 1.0 =
 *Essa versao vem com dois  shortcode:
-***[formCadastro]** para criar um formulario de cadastro;
-***[listCurriculos]** para criar uma lista dos cadastrados.
-*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae, onde tem as informacoes do plugin e um email para suporte, uma lista com todos os registros cadastrado, com as opcoes para alterar registro e deletar o mesmo.
+**[formCadastro]** para criar um formulario de cadastro;
+**[listCurriculos]** para criar uma lista dos cadastrados.
+Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae, onde tem as informacoes do plugin e um email para suporte, uma lista com todos os registros cadastrado, com as opcoes para alterar registro e deletar o mesmo.
 
 == Screenshots ==
