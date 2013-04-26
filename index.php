@@ -11,7 +11,6 @@ Author URI: http://wiliamluis.wordpress.com/plugin/
 License: GPLv2
 */
 
-
 // Vamos criar uma tabela que irá guardar os IPs dos usuários que
 // acessam o nosso website.
 // ATENÇÃO: Este código é apenas didático. Se o usar para produção
