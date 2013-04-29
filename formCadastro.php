@@ -12,6 +12,7 @@ include_once( plugin_dir_path( __FILE__ ) . 'enviarCadastro.php' );
               <input type="text" name="nome" value="<?php echo @$_SESSION['nome']?>" class="input-medium input-block-level"> 
             </div>
           </div>
+         <?php /*
           <div class="control-group">
             <label class="control-label">Login:</label>
             <div class="controls">
@@ -24,6 +25,7 @@ include_once( plugin_dir_path( __FILE__ ) . 'enviarCadastro.php' );
               <input type="password" name="senha" value="" class="input-block-level input-medium"> 
             </div>
           </div>
+		  */ ?>
           <div class="control-group">
             <label class="control-label">Email:</label>
             <div class="controls">

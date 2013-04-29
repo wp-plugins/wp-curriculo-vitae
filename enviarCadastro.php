@@ -17,13 +17,13 @@
 		  $nome 		= $_POST["nome"];
 		  $email 		= $_POST["email"];
 		  $cpf 			= $_POST["cpf"];
-		  $login 		= $_POST["login"];
+		  #$login 		= $_POST["login"];
 		  
-		  if(isset($_SESSION['senha'])){
+		  /*if(isset($_SESSION['senha'])){
 		  	$senha 		= $_SESSION['senha'];
 		  }else{
 			$senha 		= $_POST["senha"];
-		  }
+		  }*/
 		  
 		  $descricao 	= $_POST["descricao"];
 		  
@@ -49,8 +49,8 @@
 			// Registar os IPs na base de dados
 			$var = array(
 			  'nome' 		=> $nome,
-			  'login' 		=> $login,
-			  'senha' 		=> $senha,
+			  #'login' 		=> $login,
+			  #'senha' 		=> $senha,
 			  'email' 		=> $email,
 			  'cpf' 		=> $cpf,
 			  'descricao' 	=> $descricao,

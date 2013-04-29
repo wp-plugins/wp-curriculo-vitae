@@ -2,14 +2,15 @@
 /*
 Plugin Name: WP-Currículo Vitae - Free
 Plugin URI: http://wiliamluis.wordpress.com
-Description: O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissional do usuario, onde que esse cadastro vai se torna publico.
-Tera uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
-Na Propria lista pode buscar um nome ou uma especificacao, facilitando a busca.
+Description: O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
+Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
+Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
+Version: 1.4
 Author: William Luis da Silva
-Version: 1.0
 Author URI: http://wiliamluis.wordpress.com/plugin/
 License: GPLv2
 */
+
 
 // Vamos criar uma tabela que irá guardar os IPs dos usuários que
 // acessam o nosso website.
@@ -21,7 +22,7 @@ License: GPLv2
 // Registamos a função para correr na ativação do plugin
 register_activation_hook( __FILE__, 'ewp_install_hook' );
 
-#register_deactivation_hook( __FILE__, 'ewp_unistall_hook' );
+register_deactivation_hook( __FILE__, 'ewp_unistall_hook' );
 
 function ewp_install_hook() {
   // Vamos testar a versão do PHP e do WordPress
@@ -33,21 +34,14 @@ function ewp_install_hook() {
   }
 }
 
-/*
 function ewp_unistall_hook(){
 	include_once( plugin_dir_path( __FILE__ ) . 'uninstall.php' );
-}*/
+}
 
 add_action( 'init', 'ewp_create_table' ); #Cria o banco de dados e a pasta onde vai ser salvo os arquivos
 
 add_action('wp_print_styles', 'estilos'); #Onde é chamado os CSSs do plugin - Visual externo do plugin
 #add_action( 'admin_enqueue_scripts', 'estilos' ); #Onde é chamado os CSSs do plugin - Visual interno do plugin
-
-add_action('admin_print_scripts', 'add_admin_scripts');
-
-function add_admin_scripts() {
-    wp_enqueue_script('jquery');
-}
 
 add_action('admin_menu', 'ewp_pagina_opcoes'); #Cria um painel do plugin no administrativo do wordpress
 

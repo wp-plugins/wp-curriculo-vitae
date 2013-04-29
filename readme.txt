@@ -41,6 +41,10 @@ Essa versao vem com dois  shortcode:
 
 **[listCurriculos]** para criar uma lista dos cadastrados.
 
+= 1.4 =
+
+Reparado os erros do painel, e atualizado o formulario de cadastro.
+
 *Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae, onde tem as informacoes do plugin e um email para suporte, uma lista com todos os registros cadastrado, com as opcoes para alterar registro e deletar o mesmo.
 
 == Screenshots ==

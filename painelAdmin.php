@@ -33,6 +33,9 @@ function delete($id){
 wp_enqueue_style( "bootstrap", plugins_url('css/bootstrap.css', __FILE__));
 wp_enqueue_style( "bootstrapresponsive", plugins_url('css/bootstrap-responsive.css', __FILE__));
 wp_enqueue_script('jquery');
+wp_enqueue_script('bootstrapJS', plugins_url('js/bootstrap.min.js', __FILE__));
+
+wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
 ?>
 <div class="wrap">
   <?php screen_icon(); ?>
@@ -53,77 +56,53 @@ wp_enqueue_script('jquery');
 			
 		</style>
 
-        	<?php
-				wp_enqueue_script('script2JS', plugins_url('js/script2.js', __FILE__));
-			?>
+        	
+ 
   
-  <div id="caixa">
-    	
-	    	<!-- Início: Seleção de abas -->
-			
-			<p id="abas">
-				<?php if($msg==3){ ?>
-                    <a href="#aba1">Home</a>
-                    <a href="#aba2" class="selected">Lista</a>
-                <?php }else{ ?>
-                	<a href="#aba1" class="selected">Home</a>
-                    <a href="#aba2">Lista</a>
-                <?php } ?>
-				<?php #<a href="#aba3">Aba 3</a> ?>
-			</p>
-			
-			<!-- Fim: Seleção de abas -->
-			
-			<!-- Início: Conteúdo das abas -->
-			
-			<ul id="conteudos">
-			
-				<!-- Início: Conteúdo da Aba 1 -->
-			
-				<li id="aba1">
-				
-					<h2>Demonstração de texto1</h2>					
-					<p>Para cria o formulário de cadastro use shortcode <strong>[formCadastro]</strong></p>
-                    <p>Para cria a listagem dos currículos use shortcode <strong>[listCurriculos]</strong></p>
-                    <p>Use o widget "Cadastro currículo - Login", para os usúarios cadastrados, poder ter acesso ao seu dados e poder alterar se necessário.</p>
-                    <p>Use o widget "Cadastro currículo - Busca", para procurar o nome ou a profissão que estão cadastrados.</p>
-                    <p>Qualquer dúvida envie uma mensagem para o email <a href="mailto:wiliamluisilva@gmail.com">wiliamluisilva@gmail.com</a> ou acesse o blog e deixe uma mensagem no contato <a href="http://wiliamluis.wordpress.com/contato/">clicando aqui</a></p>
-
-				</li>
-				
-				<!-- Fim: Conteúdo da Aba 1 -->
-				
-				<!-- Início: Conteúdo da Aba 2 -->
-				
-				<li id="aba2">
-				
-					<h2>Lista de currículos</h2>
-					<?php include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculosAdmin.php' );?>
-					
-				</li>
-				
-				<!-- Fim: Conteúdo da Aba 2 -->
-				
-				<!-- Início: Conteúdo da Aba 3 -->
-				<?php /*
-				<li id="aba3">
-				
-					<h2>Trololooooooo</h2>
-					<iframe width="756" height="480" src="http://www.youtube.com/embed/v1PBptSDIh8" frameborder="0" allowfullscreen></iframe>
-					
-				</li>
-				*/ ?>
-	
-				<!-- Fim: Conteúdo da Aba 3 -->
-				
-			</ul>
-			
-			<!-- Fim: Conteúdo das abas -->
-		
-		</div>
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <?php if($msg==3){ ?>
+          <li><a href="#tab1" data-toggle="tab">Home</a></li>
+          <li class="active" ><a href="#tab2" data-toggle="tab">Lista</a></li>
+      <?php }else{ ?>
+          <li class="active"><a href="#tab1" data-toggle="tab">Home</a></li>
+          <li><a href="#tab2" data-toggle="tab">Lista</a></li>
+      <?php } ?>
+    </ul>
+    <div class="tab-content">
+      <?php if($msg==3)	{ ?>
+      	<div class="tab-pane" id="tab1">
+      <?php }else{ ?>
+      	<div class="tab-pane active" id="tab1">
+      <?php } ?>
+      
+        <h2>Demonstração de texto1</h2>					
+        <p>Para cria o formulário de cadastro use shortcode <strong>[formCadastro]</strong></p>
+        <p>Para cria a listagem dos currículos use shortcode <strong>[listCurriculos]</strong></p>
+        <p>Use o widget "Cadastro currículo - Login", para os usúarios cadastrados, poder ter acesso ao seu dados e poder alterar se necessário.</p>
+        <p>Use o widget "Cadastro currículo - Busca", para procurar o nome ou a profissão que estão cadastrados.</p>
+        <p>Qualquer dúvida envie uma mensagem para o email <a href="mailto:wiliamluisilva@gmail.com">wiliamluisilva@gmail.com</a> ou acesse o blog e deixe uma mensagem no contato <a href="http://wiliamluis.wordpress.com/contato/">clicando aqui</a></p>
+      </div>
+      
+       <?php if($msg==3)	{ ?>
+       	<div class="tab-pane active" id="tab2">
+       <?php }else{ ?>
+       	<div class="tab-pane" id="tab2">
+       <?php } ?>
+      
+        <h2>Lista de currículos</h2>
+		<?php include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculosAdmin.php' );?>
+      </div>
+    </div>
+  </div>
+  
+  
   
   <?php /*
   <form action="options.php" method="post">
     // Todo o conteúdo tem de vir aqui dentro
   </form> */ ?>
 </div>
+  <?php
+wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
+?>

@@ -64,7 +64,7 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
                 ?>
                 <tr>
                   <td><?php echo $v->nome ?></td>
-                  <td ><a class="various" href="#curriculo_<?php echo $x; ?>">Descrição completa</a><?php #echo $v->descricao ?></td>
+                  <td ><a class="various" href="#curriculo_<?php echo $x; ?>" rel="prettyPhoto[inline]">Descrição completa</a><?php #echo $v->descricao ?></td>
                   <td style="text-align:center;"><a href="mailto:<?php echo $v->email?>" target="_blank">
                   <img src="<?php echo plugins_url('img/email.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->email?>" /></a></td>
                   <td style="text-align:center;"><a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a></td>
@@ -98,6 +98,3 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
     </div>
 </div>
   </form>
-  <?php
-wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
-?>
