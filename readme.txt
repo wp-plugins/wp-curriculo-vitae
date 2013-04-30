@@ -36,9 +36,9 @@ Claro que pode, para isso acesse o link [Wiliamluis - WP-Curr&iacute;culo Vitae]
 
 = 1.4 =
 
-Atualização do layout do painel e formulario de cadastro.
+Atualizacao do layout do painel e formulario de cadastro.
 
-*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
+* Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
 
 = 1.0 =
 Essa versao vem com dois  shortcode:
