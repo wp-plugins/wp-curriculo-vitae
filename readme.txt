@@ -8,9 +8,9 @@ License: GPLv2
 
 == Description ==
 
-O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissional do usuario, onde que esse cadastro vai se torna publico.
-Tera uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
-Na Propria lista pode buscar um nome ou uma especificacao, facilitando a busca.
+O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissionais do usuario, possibilitando se cadastro e se torna publica.
+Exibe uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
+Permite buscar nome ou uma especificacao, facilitando e agilizando a busca.
 
 1. Para fazer o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**
 2. Para criar a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**
@@ -43,8 +43,8 @@ Essa versao vem com dois  shortcode:
 
 = 1.4 =
 
-Reparado os erros do painel, e atualizado o formulario de cadastro.
+Atualização do layout do painel e formulario de cadastro.
 
-*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae, onde tem as informacoes do plugin e um email para suporte, uma lista com todos os registros cadastrado, com as opcoes para alterar registro e deletar o mesmo.
+*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
 
 == Screenshots ==
