@@ -10,11 +10,9 @@ O *WP-Curriculo Vitae*, crie um banco de dados de curriculos.
 
 == Description ==
 
-O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissional do usuario, onde que esse cadastro vai 
-
-se torna publico.
-Tera uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
-Na Propria lista pode buscar um nome ou uma especificacao, facilitando a busca.
+O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissionais do usuario, possibilitando se cadastro e se torna publica.
+Exibe uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
+Permite buscar nome ou uma especificacao, facilitando e agilizando a busca.
 
 *Para fazer o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**
 *Para criar a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**
