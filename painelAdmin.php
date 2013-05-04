@@ -29,37 +29,16 @@ function delete($id){
 	echo "<script>location.href='".$path."'</script>";
 }
 
-
 wp_enqueue_style( "bootstrap", plugins_url('css/bootstrap.css', __FILE__));
 wp_enqueue_style( "bootstrapresponsive", plugins_url('css/bootstrap-responsive.css', __FILE__));
 wp_enqueue_script('jquery');
 wp_enqueue_script('bootstrapJS', plugins_url('js/bootstrap.min.js', __FILE__));
 
-wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
 ?>
 <div class="wrap">
-  <?php screen_icon(); ?>
-  <h2>WP-CV - Painel</h2>
-  <br/>
-        <style type="text/css">
-		  /*body {margin: 20px; padding: 0; font-family: Verdana; font-size: 11px;}*/
-		  
-		  /* Estilo utilizado no exemplo */
-
-		  div#caixa {display: inline-block; width: 800px; height: 600px;}
-		  div#caixa p#abas {display: inline-block; width: 790px; height: 40px; margin: 0 10px 0 10px; padding: 0; overflow: hidden; vertical-align: bottom;}
-		  div#caixa p#abas a {display: inline-block; font-size: 14px; font-weight: bold; color: #666; text-decoration: none; padding: 12px 26px 12px 26px; margin: 0 5px 0 0; background-color: #f0f0f0;}
-		  div#caixa p#abas a:hover {background-color: #999; color: white;}
-		  div#caixa p#abas a.selected {background-color: #ffcc00; color: #000;}
-		  div#caixa ul#conteudos {display: inline-block; width: 798px; margin: 0; padding: 0; border: 1px solid #ccc;}
-		  div#caixa ul#conteudos li {display: inline-block; width: 758px; margin: 10px 20px 10px 20px; padding: 0; overflow: auto;}
-			
-		</style>
-
-        	
- 
-  
-  <div class="tabbable"> <!-- Only required for left/right tabs -->
+   <?php screen_icon(); ?>
+   <h2>WP - Currículo Vitae Free - Painel</h2>
+   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
       <?php if($msg==3){ ?>
           <li><a href="#tab1" data-toggle="tab">Home</a></li>
@@ -76,7 +55,7 @@ wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
       	<div class="tab-pane active" id="tab1">
       <?php } ?>
       
-        <h2>Demonstração de texto1</h2>					
+        <h2>Informações do plugin</h2>					
         <p>Para cria o formulário de cadastro use shortcode <strong>[formCadastro]</strong></p>
         <p>Para cria a listagem dos currículos use shortcode <strong>[listCurriculos]</strong></p>
         <p>Use o widget "Cadastro currículo - Login", para os usúarios cadastrados, poder ter acesso ao seu dados e poder alterar se necessário.</p>
@@ -95,14 +74,5 @@ wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
       </div>
     </div>
   </div>
-  
-  
-  
-  <?php /*
-  <form action="options.php" method="post">
-    // Todo o conteúdo tem de vir aqui dentro
-  </form> */ ?>
 </div>
-  <?php
-wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
-?>
+<?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>
