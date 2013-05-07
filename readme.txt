@@ -6,24 +6,53 @@ Tested up to: 3.5.1
 Stable tag: 3.5
 License: GPLv2
 
+O **WP-Curriculo Vitae Free** é um plugin que permite que usuários a cadastrem seu curriculo no site para divulgação online ou para uso do site.
+
 == Description ==
 
-O *WP-Curriculo Vitae* possibilita o cadastro de informacoes profissional do usuario, onde que esse cadastro vai se torna publico.
-Tera uma lista com as informacoes dos cadastro, podendo entrar em contato com o cadastrado.
-Na Propria lista pode buscar um nome ou uma especificacao, facilitando a busca.
+O **WP-Curriculo Vitae Free** é um plugin que permite que usuários a cadastrem seu curriculo no site para divulgação online ou para uso do site.
 
-1. Para fazer o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**
-2. Para criar a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**
-3. Use o widget WP-CV para facilitar as busca do cadastrados nao precisando abrir a pagina de listagem, para ter um bom funcionamento dessa widget, precisa colocar o endereco da pagina de listagem.
-4. Use widget WP-CV para os cadastrados poder fazer login para poderem alterar seu cadastro.
-  
-Obs. Os widget sao apenas para a versao paga.
+O plugin trabalha com duas versões:
+ 
+**Versão gratuita:**
+ 
+1. Cadastrar o curriculo;
+2. Listagem de cúrriculos com sistema de busca.
+ 
+**Versão paga:**
+ 
+1. Cadastrar o currículo;
+2. Editar através de área restrita;
+3. Widget de login na área restritra;
+4. Listagem de cúrriculos com sistema de busca;
+5. Widget de Busca de Currículos.
+ 
+[Link para para plugin pago](http://wiliamluis.wordpress.com/plugin/)
+ 
+**Como utilizar**
+ 
+Para exibir o formulario de cadastro, crie uma pagina e coloque o shortcode
+ 
+**[formCadastro]**
+ 
+Para exibir a listagem dos cadastrados, crie uma pagina e coloque o shortcode
+ 
+**[listCurriculos]**
+ 
+Use o widget **WP-Curriculo Vitae busca** para exibir a busca rápida de currículo em todas as páginas.
+ 
+Use o widget **WP-Curriculo Vitae login** para exibir o formulário de login em todas as páginas 
+ 
+*Obs.* Os widget sao apenas para a versao paga.
+
+Desenvolvido por [Wiliamluis](tomail:wiliamluisilva@gmail.com) - [Atualnet](http://www.atualnet.com.br)
+
 
 == Installation ==
 
-1. Subir o arquivo zipado para o diretorio '/wp-content/plugins/'
-2. Ativar o aplicativo
-3. Crie uma paginas colocando o shortcode e publique
+1. Subir o arquivo zipado para o diretorio '/wp-content/plugins/' ou instalar atraves do painel de plugin do wordpress;
+2. Ativar o aplicativo;
+3. Crie uma paginas colocando o shortcode e publique.
 
 
 == Frequently Asked Questions ==
@@ -34,12 +63,6 @@ Claro que pode, para isso acesse o link [Wiliamluis - WP-Curr&iacute;culo Vitae]
 
 == Changelog ==
 
-= 1.4 =
-
-Atualizacao do layout do painel e formulario de cadastro.
-
-* Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
-
 = 1.0 =
 Essa versao vem com dois  shortcode:
 
@@ -47,5 +70,10 @@ Essa versao vem com dois  shortcode:
 
 **[listCurriculos]** para criar uma lista dos cadastrados.
 
+= 1.4 =
+
+Atualizacao do layout do painel e formulario de cadastro.
+
+*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
 
 == Screenshots ==
