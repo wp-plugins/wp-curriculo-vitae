@@ -6,7 +6,7 @@ Tested up to: 3.5.1
 Stable tag: 3.5
 License: GPLv2
 
-O **WP-Curriculo Vitae Free** e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
+O **WP-Curriculo Vitae Free** e um plugin que permite que usuários a cadastrem seu currículo no site para divulgação online ou para uso do site.
 
 == Description ==
 
@@ -41,7 +41,7 @@ Para exibir a listagem dos cadastrados, crie uma pagina e coloque o shortcode
  
 Use o widget **WP-Curriculo Vitae busca** para exibir a busca rapida de curriculo em todas as paginas.
  
-Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em todas as páginas 
+Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em todas as paginas 
  
 *Obs.* Os widget sao apenas para a versao paga.
 
