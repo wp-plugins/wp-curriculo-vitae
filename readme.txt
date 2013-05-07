@@ -31,17 +31,13 @@ O plugin trabalha com duas versoes:
  
 **Como utilizar**
  
-Para exibir o formulario de cadastro, crie uma pagina e coloque o shortcode
+Para exibir o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**.
  
-**[formCadastro]**
- 
-Para exibir a listagem dos cadastrados, crie uma pagina e coloque o shortcode
- 
-**[listCurriculos]**
+Para exibir a listagem dos cadastrados, crie uma pagina e coloque o shortcode **[listCurriculos]**.
  
 Use o widget **WP-Curriculo Vitae busca** para exibir a busca rapida de curriculo em todas as paginas.
  
-Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em todas as paginas 
+Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em todas as paginas.
  
 *Obs.* Os widget sao apenas para a versao paga.
 
