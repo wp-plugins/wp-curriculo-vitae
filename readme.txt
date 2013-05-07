@@ -6,26 +6,26 @@ Tested up to: 3.5.1
 Stable tag: 3.5
 License: GPLv2
 
-O **WP-Curriculo Vitae Free** é um plugin que permite que usuários a cadastrem seu curriculo no site para divulgação online ou para uso do site.
+O **WP-Curriculo Vitae Free** e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
 
 == Description ==
 
-O **WP-Curriculo Vitae Free** é um plugin que permite que usuários a cadastrem seu curriculo no site para divulgação online ou para uso do site.
+O **WP-Curriculo Vitae Free** e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
 
-O plugin trabalha com duas versões:
+O plugin trabalha com duas versoes:
  
-**Versão gratuita:**
+**Versao gratuita:**
  
 1. Cadastrar o curriculo;
-2. Listagem de cúrriculos com sistema de busca.
+2. Listagem de curriculos com sistema de busca.
  
-**Versão paga:**
+**Versao paga:**
  
-1. Cadastrar o currículo;
-2. Editar através de área restrita;
-3. Widget de login na área restritra;
-4. Listagem de cúrriculos com sistema de busca;
-5. Widget de Busca de Currículos.
+1. Cadastrar o curriculo;
+2. Editar atraves de area restrita;
+3. Widget de login na area restritra;
+4. Listagem de curriculos com sistema de busca;
+5. Widget de Busca de Curriculos.
  
 [Link para para plugin pago](http://wiliamluis.wordpress.com/plugin/)
  
@@ -39,9 +39,9 @@ Para exibir a listagem dos cadastrados, crie uma pagina e coloque o shortcode
  
 **[listCurriculos]**
  
-Use o widget **WP-Curriculo Vitae busca** para exibir a busca rápida de currículo em todas as páginas.
+Use o widget **WP-Curriculo Vitae busca** para exibir a busca rapida de curriculo em todas as paginas.
  
-Use o widget **WP-Curriculo Vitae login** para exibir o formulário de login em todas as páginas 
+Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em todas as páginas 
  
 *Obs.* Os widget sao apenas para a versao paga.
 

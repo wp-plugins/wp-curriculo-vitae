@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP-Currículo Vitae - Free
 Plugin URI: http://wiliamluis.wordpress.com
-Description: O WP-Curriculo Vitae Free é um plugin que permite que usuários a cadastrem seu curriculo no site para divulgação online ou para uso do site.
+Description: O WP-Curriculo Vitae Free e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
 Author: William Luis da Silva
 Version: 1.0
 Author URI: http://wiliamluis.wordpress.com/plugin/
