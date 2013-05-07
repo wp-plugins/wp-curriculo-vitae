@@ -45,7 +45,7 @@ Use o widget **WP-Curriculo Vitae login** para exibir o formulario de login em t
  
 *Obs.* Os widget sao apenas para a versao paga.
 
-Desenvolvido por [Wiliamluis](tomail:wiliamluisilva@gmail.com) - [Atualnet](http://www.atualnet.com.br)
+Desenvolvido por [Wiliamluis](wiliamluisilva@gmail.com) - [Atualnet](http://www.atualnet.com.br)
 
 == Installation ==
 
