@@ -2,8 +2,8 @@
  
 // Vamos garantir que é o WordPress que chama este ficheiro
 // e que realmente está a desistalar o plugin.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
-  die();
+#if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
+ # die();
  
 
 // Acesso ao objeto global de gestão de bases de dados

@@ -11,6 +11,8 @@
 	 if(isset($_POST["cadastrar"])){
 	 
 		  global $wpdb;
+		  
+		  
 		 
 		  // IP do usuário
 		  #$ip = $_SERVER["REMOTE_ADDR"];
@@ -24,8 +26,25 @@
 		  }else{
 			$senha 		= $_POST["senha"];
 		  }*/
-		  
+		  $id_area 		= $_POST["id_area"];
 		  $descricao 	= $_POST["descricao"];
+		  
+		  if($_POST["area"]){
+			  
+			  $area 		= $_POST["area"];
+	
+			  // A Hora a que o usuário acessou
+			  $current_time = current_time( 'mysql' );
+			  
+			  // Checamos se não existe nenhum registo procedemos
+			  $var = array(
+				'area' 		=> $area,
+			  );
+			  
+			  $wpdb->insert("wls_areas", $var );
+			  
+			  $id_area = $wpdb->insert_id;
+		  }
 		  
 		  $senha = md5($senha);
 		 
@@ -53,6 +72,7 @@
 			  #'senha' 		=> $senha,
 			  'email' 		=> $email,
 			  'cpf' 		=> $cpf,
+			  'id_area' 	=> $id_area,
 			  'descricao' 	=> $descricao,
 			  'curriculo' 	=> $nome2.".".$tipo[1],
 			);
@@ -61,13 +81,24 @@
 			print_r($var);
 			print"</pre>";*/
 			
+			$proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
+			$location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 			if(@$_SESSION['logado']==1){
 				// Guardar os valores na tabela
 				$wpdb->update( "wls_curriculo", $var, array('id' => $_SESSION['id']), $format = null, $where_format = null );
+				
+				$path = $location.'&msg=2';
+				
+				echo "<script>location.href='".$path."'</script>";
+				
 			}else{
 				// Guardar os valores na tabela
 				$wpdb->insert("wls_curriculo", $var );
+				
+				$path = $location.'&msg=1';
+				
+				echo "<script>location.href='".$path."'</script>";
 			}
 			#$wpdb->show_errors();
 			#$wpdb->print_error();

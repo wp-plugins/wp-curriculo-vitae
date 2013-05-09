@@ -9,7 +9,7 @@ $buscar = $_POST['buscar'];
 $where = "";
 
 if($buscar){
-	$where .= " and (nome LIKE  '%".$buscar."%' or descricao LIKE '%".$buscar."%')";
+	$where .= " and (a.nome LIKE  '%".$buscar."%' or a.descricao LIKE '%".$buscar."%')";
 }
 
 ######### INICIO Paginação
@@ -22,10 +22,28 @@ $inicial = $pg * $numreg;
 
 ######### FIM dados Paginação
 
-$sql = "SELECT * FROM wls_curriculo where 1=1 $where LIMIT $inicial, $numreg ";
+$sql = "SELECT a.*,
+			   b.area
+		
+		FROM wls_curriculo a
+		
+			left join wls_areas b
+				on a.id_area = b.id
+		
+		where 1=1 $where LIMIT $inicial, $numreg ";
+		
 $query = $wpdb->get_results( $sql );
 
-$sqlRow = "SELECT * FROM wls_curriculo where 1=1 $where";
+$sqlRow = "SELECT a.*,
+				  b.area
+		   
+		   FROM wls_curriculo a
+		   
+		   		left join wls_areas b
+					on a.id_area = b.id
+		   
+		   where 1=1 $where";
+		   
 $queryRow = $wpdb->get_results( $sqlRow );
 $quantreg = $wpdb->num_rows; // Quantidade de registros pra paginação
 
@@ -33,22 +51,15 @@ wp_enqueue_style( "prettyPhotoCSS", plugins_url('css/prettyPhoto.css', __FILE__)
 wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FILE__));	
 ?>
 
-
-<div class="container-fluid">
-	<div class="well" style="font-size:12px; color:#666;">
-        <form method="post" class="navbar-search pull-right">
-          <input type="text" name="buscar" class="search-query input-block-level" placeholder="Pesquisar currículo..."> 
+        <form method="post" class="navbar-search pull-right" style="width:100%;margin-bottom:10px;">
+          <input type="text" name="buscar" class="input-block-level" placeholder="Busca rápida..." style="width:100%;"> 
         </form>
-        <p>Aqui está todos currículos cadastrados.</p>
-        <div>Clique no arquivo do currículo para baixar o mesmo.
-          <br>
-          <div>Clique no e-mail para enviar uma mensagem para a pessoa desejada.</div>
-        </div>
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
               <th>Nome</th>
               <th>Descrição</th>
+              <th>Área de serviço</th>
               <th width="50">E-mail</th>
               <th width="50">Arquivo</th>
             </tr>
@@ -61,9 +72,14 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
                 ?>
                 <tr>
                   <td><?php echo $v->nome ?></td>
-                  <td ><a class="various" href="#curriculo_<?php echo $x; ?>" rel="prettyPhoto[inline]">Descrição completa</a><?php #echo $v->descricao ?></td>
+                  
+                  <td ><a class="various" href="#curriculo_<?php echo $x; ?>" rel="prettyPhoto[inline]">Descrição completa</a></td>
+                  
+                  <td><?php echo $v->area ?></td>
+                  
                   <td style="text-align:center;"><a href="mailto:<?php echo $v->email?>" target="_blank">
                   <img src="<?php echo plugins_url('img/email.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->email?>" /></a></td>
+                  
                   <td style="text-align:center;"><a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a></td>
                   
                   <div style='display:none'>
@@ -80,16 +96,12 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
                   
                 </tr>
                 
-          
-                
           <?php $x++; }  ?>
             
           </tbody>
         </table>
-        <?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao.php' ); // Chama o arquivo que monta a paginação. ex: << anterior 1 2 3 4 5 próximo >> ?>
         
-    </div>
-</div>
-<?php
-wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__));
-?>
+		<?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao.php' ); // Chama o arquivo que monta a paginação. ex: << anterior 1 2 3 4 5 próximo >> ?>
+
+
+<?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>

@@ -1,12 +1,8 @@
 (function ($) {
-$(document).ready(function(){
-	$("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',autoplay_slideshow: false});
-});
-
-
-$('.tab2 a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-})
+	
+	//Função que chama o lightbox para exibir as informações completa do cadastro
+	$(document).ready(function(){
+		$("a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',autoplay_slideshow: false});
+	});
 
 }(jQuery));

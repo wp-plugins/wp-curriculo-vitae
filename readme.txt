@@ -70,6 +70,18 @@ Essa versao vem com dois  shortcode:
 
 Atualizacao do layout do painel e formulario de cadastro.
 
-*Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
+* Um painel que esta em ferramentas Configuracoes - WP-Curriculo Vitae free, primeira aba exibe as informacoes do plugin e um email para suporte, na segunda aba exibe lista com todos os registros cadastrado, possibilitando excluir o mesmo.
+
+= 2.0 =
+
+* Menu próprio com atualizacao no layout, com 3 submenus.
+
+1. Informacoes sobre o plugin;
+2. Lista de currículos cadastrado, podendo excluir os registro;
+3. Lista de areas de servicos cadastrado, com um campo de rapido cadastramento e com opcao de exclusão.
+
+* Remocao dos textos no formulario de cadastro e na listagem.
+* Novo campo para cadastro de area de servico.
+
 
 == Screenshots ==
