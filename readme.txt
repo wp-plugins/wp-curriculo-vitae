@@ -27,8 +27,6 @@ O plugin trabalha com duas versoes:
 4. Listagem de curriculos com sistema de busca;
 5. Widget de Busca de Curriculos.
  
-[Link para para plugin pago](http://wiliamluis.wordpress.com/plugin/)
- 
 **Como utilizar**
  
 Para exibir o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**.
