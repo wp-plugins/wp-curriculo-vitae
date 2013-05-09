@@ -26,7 +26,10 @@ O plugin trabalha com duas versoes:
 3. Widget de login na area restritra;
 4. Listagem de curriculos com sistema de busca;
 5. Widget de Busca de Curriculos.
+
+Para comprar a versão paga acesse a página [Wiliamluis](http://wiliamluis.wordpress.com/plugin/) ou acesse pelo menu da versão gratuita.
  
+
 **Como utilizar**
  
 Para exibir o formulario de cadastro, crie uma pagina e coloque o shortcode **[formCadastro]**.
