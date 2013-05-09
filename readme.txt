@@ -27,7 +27,7 @@ O plugin trabalha com duas versoes:
 4. Listagem de curriculos com sistema de busca;
 5. Widget de Busca de Curriculos.
 
-Para comprar a versão paga acesse a página [Wiliamluis](http://wiliamluis.wordpress.com/plugin/) ou acesse pelo menu da versão gratuita.
+Para comprar a versao paga acesse a pagina [Wiliamluis](http://wiliamluis.wordpress.com/plugin/) ou acesse pelo menu da versao gratuita.
  
 
 **Como utilizar**
@@ -75,11 +75,11 @@ Atualizacao do layout do painel e formulario de cadastro.
 
 = 2.0 =
 
-* Menu próprio com atualizacao no layout, com 3 submenus.
+* Menu proprio com atualizacao no layout, com 3 submenus.
 
 1. Informacoes sobre o plugin;
-2. Lista de currículos cadastrado, podendo excluir os registro;
-3. Lista de areas de servicos cadastrado, com um campo de rapido cadastramento e com opcao de exclusão.
+2. Lista de curriculos cadastrado, podendo excluir os registro;
+3. Lista de areas de servicos cadastrado, com um campo de rapido cadastramento e com opcao de exclusao.
 
 * Remocao dos textos no formulario de cadastro e na listagem.
 * Novo campo para cadastro de area de servico.
