@@ -114,7 +114,7 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
             <?php }elseif($_GET['msg']==3){ ?>
             	<div class="alert alert-success" style="text-align:center;">Área deletado com sucesso!</div>
             <?php }?>
-    		<form action="" method="post">
+    		
                 <table class="table table-striped table-bordered table-condensed table-hover">
                   <thead>
                     <tr>
@@ -133,8 +133,10 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
                     <tr>
                       <td><?php echo @$v->area ?></td>
                       <td style="text-align:center;">
-                        <input type="hidden" name="id" value="<?php echo $v->id ?>" />
-                        <input type="image" name="delete" src="<?php echo plugins_url('img/delete.png',__FILE__)?>" width="16" height="16" />
+                      	<form action="" method="post">
+                            <input type="hidden" name="id" value="<?php echo $v->id ?>" />
+                            <input type="image" name="delete" src="<?php echo plugins_url('img/delete.png',__FILE__)?>" width="16" height="16" />
+                        </form>
                       </td>
                     </tr>
                     
@@ -142,7 +144,7 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
                   
                   </tbody>
                 </table>
-            </form>
+            
             
 		<?php }else{ ?>
         
