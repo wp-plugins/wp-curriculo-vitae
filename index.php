@@ -41,7 +41,7 @@ function ewp_unistall_hook(){
 add_action( 'init', 'ewp_create_table' ); #Cria o banco de dados e a pasta onde vai ser salvo os arquivos
 
 add_action('wp_print_styles', 'estilos'); #Onde é chamado os CSSs do plugin - Visual externo do plugin
-add_action( 'admin_enqueue_scripts', 'estilos' ); #Onde é chamado os CSSs do plugin - Visual interno do plugin
+#add_action( 'admin_enqueue_scripts', 'estilos' ); #Onde é chamado os CSSs do plugin - Visual interno do plugin
 
 add_action('admin_menu', 'ewp_pagina_opcoes'); #Cria um painel do plugin no administrativo do wordpress
  
