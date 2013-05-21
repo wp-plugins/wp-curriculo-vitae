@@ -88,4 +88,4 @@ wp_enqueue_script( 'jquery');
   </form>
 </div>
 
-<?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>
+<?php wp_enqueue_script('scriptJS', plugins_url('js/scriptArea.js', __FILE__)); ?>
