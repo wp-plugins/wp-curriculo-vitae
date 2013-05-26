@@ -20,7 +20,7 @@ if ( $wpdb->get_var( "SHOW TABLES LIKE '$tablename'" ) != $tablename || $wpdb->g
 			senha varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			cpf varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			email varchar(255) COLLATE latin1_bin DEFAULT NULL,
-			file varchar(255) COLLATE latin1_bin DEFAULT NULL,
+			curriculo varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			PRIMARY KEY (`id`)
 		  );
 		  
