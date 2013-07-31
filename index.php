@@ -5,7 +5,7 @@ Plugin URI: http://wiliamluis.wordpress.com/plugin/
 Description: O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
 Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
 Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
-Version: 2.0
+Version: 2.2
 Author: William Luis da Silva
 Author URI: http://wiliamluis.wordpress.com/plugin/
 License: GPLv2
@@ -41,14 +41,13 @@ function ewp_unistall_hook(){
 add_action( 'init', 'ewp_create_table' ); #Cria o banco de dados e a pasta onde vai ser salvo os arquivos
 
 add_action('wp_print_styles', 'estilos'); #Onde é chamado os CSSs do plugin - Visual externo do plugin
-#add_action( 'admin_enqueue_scripts', 'estilos' ); #Onde é chamado os CSSs do plugin - Visual interno do plugin
 
 add_action('admin_menu', 'ewp_pagina_opcoes'); #Cria um painel do plugin no administrativo do wordpress
  
 function ewp_pagina_opcoes() {
   	
 	#Cria um menu dentro do menu options
-	add_menu_page( 'WP-Currículo Vitae - Painel', 'Currículo Vitae Free', 'manage_options', 'curriculo_vitae','menu_curriculo_vitae', plugins_url('img/User-Files-icon2.png', __FILE__) );
+	add_menu_page( 'WP-Currículo Vitae Free - Painel', 'Currículo Vitae Free', 'manage_options', 'curriculo_vitae','menu_curriculo_vitae', plugins_url('img/User-Files-icon2.png', __FILE__) );
 	
 	#Submenu que exibe a lista de currículos cadastrados
 	add_submenu_page( 'curriculo_vitae', 'Lista de currículos', 'Lista de currículos', 'manage_options', 'lista-de-curriculos', 'submenu_lista_curriculos' );

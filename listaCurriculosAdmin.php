@@ -20,7 +20,7 @@ if($buscar){
 ########### Função para excluir registro
 
 if(isset($_POST['delete_x'])||isset($_POST['delete_y'])){
-	delete($_POST['id']);
+	delete($_POST['id_registro']);
 }
 
 function delete($id){
@@ -30,8 +30,10 @@ function delete($id){
 	$location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	
 	$path = $location.'&msg=3';
-	$delete = $wpdb->query( "DELETE FROM wls_curriculo WHERE id = '".$id."'" );
-	mysql_query($delete);
+	
+	$delete = "DELETE FROM wls_curriculo WHERE id = ".$id." ";
+	
+	$wpdb->query($delete);
 
 	echo "<script>location.href='".$path."'</script>";
 }
@@ -83,7 +85,11 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
     <div class="container-fluid">
       <h2>Lista de currículos</h2>
       
-	  <?php if($msg==3){ ?>
+	  <?php if(@$_GET['msg']==2){ ?>
+  
+  	  	<div class="alert alert-success" style="text-align:center;">Currículo Atualizado com sucesso!</div>	
+  
+	  <?php }elseif($msg==3){ ?>
       
           <div class="alert alert-success" style="text-align:center;">Registro deletado com sucesso!</div>	
           
@@ -97,6 +103,7 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
             <th>Área de serviço</th>
             <th width="50">E-mail</th>
             <th width="50">Arquivo</th>
+            <th width="30">Editar</th>
             <th width="30">Excluir</th>
           </tr>
         </thead>
@@ -111,6 +118,20 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
                 <td><?php echo $v->nome ?></td>
                 
                 <td><a class="various" href="#curriculo_<?php echo $x; ?>" rel="prettyPhoto[inline]">Descrição completa</a><?php #echo $v->descricao ?></td>
+                <div style='display:none'>
+                    <div id='curriculo_<?php echo $x; ?>' style='padding:10px; background:#fff;'>
+                        
+                        <h2><?php echo $v->nome ?></h2>
+                        <p>
+                            <?php echo nl2br($v->descricao) ?>
+                        </p>
+                        
+                        <a href="mailto:<?php echo $v->email?>" target="_blank">
+                      <img src="<?php echo plugins_url('img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> <?php echo $v->email?></a><br />
+                        
+                        <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
+                    </div>
+                </div>
                 
                 <td><?php echo $v->area ?></td>
                 
@@ -119,24 +140,23 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
                 
                 <td style="text-align:center;"><a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a></td>
                 
+                <td style="text-align:center;">
+                	
+                    <a href="#edite_<?php echo $x; ?>" rel="edite[inline]">
+                      <img src="<?php echo plugins_url('img/user_edit.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->nome?>" /></a><br />
+                    
+                    <?php include( plugin_dir_path( __FILE__ ) . 'formEdite.php' ); ?>
+                    
+                    
+                </td>
+                
                 <form action="" method="post">
                     <td style="text-align:center;">
-                        <input type="hidden" name="id" value="<?php echo $v->id ?>" />
+                        <input type="hidden" name="id_registro" value="<?php echo $v->id ?>" />
+                        <input type="hidden" name="nome_registro" value="<?php echo $v->nome ?>" />
                         <input type="image" name="delete" src="<?php echo plugins_url('img/delete.png',__FILE__)?>" width="16" height="16" />
                     </td>
                 </form>
-                
-                <div style='display:none'>
-                    <div id='curriculo_<?php echo $x; ?>' style='padding:10px; background:#fff;'>
-                        <h2><?php echo $v->nome ?></h2>
-                        <p>
-                            <?php echo nl2br($v->descricao) ?>
-                        </p>
-                        <a href="mailto:<?php echo $v->email?>" target="_blank">
-                      <img src="<?php echo plugins_url('img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> <?php echo $v->email?></a><br />
-                        <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
-                    </div>
-                </div>
                 
               </tr>
               
@@ -145,9 +165,8 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
         </tbody>
       </table>
       
-      <?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao.php' ); ?>
+      <?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao2.php' ); ?>
       
     </div>
-
 
 <?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>

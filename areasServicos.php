@@ -152,6 +152,6 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
             
         <?php } ?>
         
-    	<?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao.php' ); ?>
+    	<?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao2.php' ); ?>
     
 </div>

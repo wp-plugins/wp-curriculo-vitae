@@ -14,13 +14,15 @@
 		 
 		  // IP do usuário
 		  #$ip = $_SERVER["REMOTE_ADDR"];
+		  $id			= $_POST["id"];
+		  $id_area 		= $_POST["id_area"];
 		  $nome 		= $_POST["nome"];
 		  $email 		= $_POST["email"];
 		  $cpf 			= $_POST["cpf"];
-		  $id_area 		= $_POST["id_area"];
+		  
 		  $descricao 	= $_POST["descricao"];
 		  
-		  if($_POST["area"]){
+		   if($_POST["area"]){
 			  
 			  $area 		= $_POST["area"];
 	
@@ -36,7 +38,7 @@
 			  
 			  $id_area = $wpdb->insert_id;
 		  }
-		  
+		 
 		  // A Hora a que o usuário acessou
 		  $current_time = current_time( 'mysql' );
 	 
@@ -45,32 +47,35 @@
 		  $tipo = explode(".", $_FILES['curriculo']['name']);
 		  $nome2 = str_replace(" ", "", $nome);
 		  
-		  if(@$_SESSION['logado']==1&&$_FILES['curriculo']['name']){
-			  @unlink("wp-content/uploads/curriculos/".@$_SESSION['curriculo']);
-			  $_SESSION['curriculo'] = $nome2.".".$tipo[1];
+		  if(@$_POST['admin']==1&&$_FILES['curriculo']['name']){
+			  @unlink("wp-content/uploads/curriculos/".@$dado->curriculo);
+			  $dado->curriculo = $nome2.".".$tipo[1];
 		  }
 		  
 		  move_uploaded_file($_FILES['curriculo']['tmp_name'], $uploaddir. $nome2.".".$tipo[1]);
 
 		  // Registar os IPs na base de dados
 		  $var = array(
+			'id_area' 	=> $id_area,
 			'nome' 		=> $nome,
 			'email' 		=> $email,
 			'cpf' 		=> $cpf,
-			'id_area' 	=> $id_area,
 			'descricao' 	=> $descricao,
 			'curriculo' 	=> $nome2.".".$tipo[1],
 		  );
 		  
 		  $proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
 		  $location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-		  
+			  
 		  // Guardar os valores na tabela
-		  $wpdb->insert("wls_curriculo", $var );
+		  $wpdb->update( "wls_curriculo", $var, array('id' => $id), $format = null, $where_format = null );
 		  
-		  $path = $location.'&msg=1';
+		  $path = $location.'&msg=2';
 		  
 		  echo "<script>location.href='".$path."'</script>";
+		  
+		  $wpdb->show_errors();
+		  $wpdb->print_error();
 	 }
 	
 ?>

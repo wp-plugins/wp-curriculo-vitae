@@ -30,7 +30,7 @@ $sql = "SELECT a.*,
 			left join wls_areas b
 				on a.id_area = b.id
 		
-		where 1=1 $where LIMIT $inicial, $numreg ";
+		where 1=1 $where order by a.nome asc LIMIT $inicial, $numreg ";
 		
 $query = $wpdb->get_results( $sql );
 
@@ -42,7 +42,7 @@ $sqlRow = "SELECT a.*,
 		   		left join wls_areas b
 					on a.id_area = b.id
 		   
-		   where 1=1 $where";
+		   where 1=1 $where order by a.nome asc";
 		   
 $queryRow = $wpdb->get_results( $sqlRow );
 $quantreg = $wpdb->num_rows; // Quantidade de registros pra paginação
@@ -50,10 +50,11 @@ $quantreg = $wpdb->num_rows; // Quantidade de registros pra paginação
 wp_enqueue_style( "prettyPhotoCSS", plugins_url('css/prettyPhoto.css', __FILE__));
 wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FILE__));	
 ?>
-
-        <form method="post" class="navbar-search pull-right" style="width:100%;margin-bottom:10px;">
-          <input type="text" name="buscar" class="input-block-level" placeholder="Busca rápida..." style="width:100%;"> 
+        
+        <form id="wp-curriculo-busca-rapida" method="post">
+          <input type="text" name="buscar" placeholder="Busca rápida..." > 
         </form>
+        
         <table class="table table-striped table-bordered">
           <thead>
             <tr>

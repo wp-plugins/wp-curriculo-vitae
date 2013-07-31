@@ -1,62 +1,61 @@
 <?php
-include_once( plugin_dir_path( __FILE__ ) . 'enviarCadastro.php' );
-wp_enqueue_script( 'jquery');	
+
+include_once( plugin_dir_path( __FILE__ ) . 'include/atualizarCadastro.php' );
+
+wp_enqueue_script( 'jquery');
+$dado = $wpdb->get_row("SELECT a.*,
+								 b.area
+						  
+						  FROM wls_curriculo a
+						  
+							  left join wls_areas b
+								  on a.id_area = b.id
+						  
+						  where a.id = '".$v->id."'");
+
 ?>
-	
-<div class="wp_conteiner">
+
+<div id='edite_<?php echo $x; ?>' style='display:none; padding:10px; background:#fff;'>	
+
+<div class="container-fluid" >
   
-  <?php if(@$_GET['msg']==1){ ?>
-  
-  	  <div class="alert alert-success" style="text-align:center;">Currículo cadastrado com sucesso!</div>	
-      
-  <?php }elseif(@$_GET['msg']==2){ ?>
-  
-  	  <div class="alert alert-success" style="text-align:center;">Currículo Atualizado com sucesso!</div>	
-  
-  <?php }elseif(@$_GET['msg']==3){ ?>
-      
-      <div class="alert alert-success" style="text-align:center;">Conta excluido com sucesso!</div>	
-      
-  <?php }?>
-  
-  <form id="wp-curriculo-cadastro" name="wp-curriculo-cadastro" method="post" enctype="multipart/form-data">
+  <form id="formCadastro" name="formCadastro" method="post" enctype="multipart/form-data">
+  	<input type="hidden" name="admin" value="1" />
+    <input type="hidden" name="id" value="<?php echo $dado->id; ?>" />
     
     <div class="control-group">
       <label class="control-label">Nome:</label>
       <div class="controls">
-        <input type="text" name="nome" value="<?php echo @$_SESSION['nome']?>" /> 
+        <input type="text" name="nome" value="<?php echo $dado->nome; ?>" class="input-medium input-block-level"> 
       </div>
     </div>
-   
+    
     <div class="control-group">
       <label class="control-label">Email:</label>
       <div class="controls">
-        <input type="email" name="email" value="<?php echo @$_SESSION['email']?>" class="input-block-level input-medium"> 
+        <input type="email" name="email" value="<?php echo $dado->email;?>" class="input-block-level input-medium"> 
       </div>
     </div>
     
     <div class="control-group">
       <label class="control-label">CPF:</label>
       <div class="controls">
-        <input type="text" name="cpf" value="<?php echo @$_SESSION['cpf']?>" class="input-medium input-block-level"> 
+        <input type="text" name="cpf" value="<?php echo $dado->cpf;?>" class="input-medium input-block-level"> 
       </div>
     </div>
     
     <div class="control-group">
-      
-	  <?php
+      <?php
           global $wpdb;
           $sqlArea = "SELECT * FROM wls_areas where 1=1";
           $queryArea = $wpdb->get_results( $sqlArea );
       ?>
-      
       <label class="control-label">Área de serviço:</label>
-      
       <div class="controls">
         <select name="id_area" id="id_area">
           <option>Selecione um área</option>
           <?php foreach($queryArea as $k => $v){?>
-              <option value="<?php echo $v->id?>"><?php echo $v->area?></option>
+              <option value="<?php echo $v->id?>" <?php echo $dado->id_area==$v->id?"selected":"";?> ><?php echo $v->area?></option>
           <?php }?>
           <option value="outro">Outro</option>
         </select>
@@ -68,21 +67,20 @@ wp_enqueue_script( 'jquery');
               <input type="text" name="area" class="input-medium input-block-level" />
           </div>
       </div>
-      
     </div>
     
     <div class="control-group">
       <label class="control-label">Descrição:</label>
       <div class="controls">
-        <textarea class="input-block-level" name="descricao"><?php echo @$_SESSION['descricao']?></textarea>
+        <textarea class="input-block-level" name="descricao"><?php echo $dado->descricao?></textarea>
       </div>
     </div>
     
     <div class="control-group">
       <label class="control-label">Enviar currículo:</label>
-      <?php if($_SESSION['curriculo']){ ?>
+      <?php if($dado->curriculo){ ?>
           <div class="well">
-              <a href="<?php echo content_url( 'uploads/curriculos/'.@$_SESSION['curriculo']); ?>" target="_blank" > <?php echo @$_SESSION['curriculo'] ?></a>
+              <a href="<?php echo content_url( 'uploads/curriculos/'.$dado->curriculo); ?>" target="_blank" > <?php echo @$dado->curriculo ?></a>
           </div>
       <?php } ?>
       <div class="controls">
@@ -93,5 +91,4 @@ wp_enqueue_script( 'jquery');
       <button type="submit" name="cadastrar" class="btn btn-primary">Cadastrar</button>
   </form>
 </div>
-
-<?php wp_enqueue_script('scriptJS', plugins_url('js/scriptArea.js', __FILE__)); ?>
+</div>

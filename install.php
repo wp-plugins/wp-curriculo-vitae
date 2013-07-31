@@ -16,8 +16,6 @@ if ( $wpdb->get_var( "SHOW TABLES LIKE '$tablename'" ) != $tablename || $wpdb->g
 			id_area int(255),
 			nome varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			descricao text COLLATE latin1_bin,
-			login varchar(255) COLLATE latin1_bin DEFAULT NULL,
-			senha varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			cpf varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			email varchar(255) COLLATE latin1_bin DEFAULT NULL,
 			curriculo varchar(255) COLLATE latin1_bin DEFAULT NULL,
