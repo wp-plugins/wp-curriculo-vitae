@@ -160,5 +160,9 @@ Upgrade from panel layout and form of registration.
 * Removal of the texts in the form of registration and listing.
 * New field to register the service area.
 
+= 2.2 =
+
+**Portugues**
+Atualização do layout para usuário final, possibilidade de editar os cadastro pelo o admin do site.
 
 == Screenshots ==
