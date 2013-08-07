@@ -1,7 +1,5 @@
 <?php
-
 include_once( plugin_dir_path( __FILE__ ) . 'include/atualizarCadastro.php' );
-
 wp_enqueue_script( 'jquery');
 $dado = $wpdb->get_row("SELECT a.*,
 								 b.area
@@ -29,14 +27,24 @@ $dado = $wpdb->get_row("SELECT a.*,
         <input type="text" name="nome" value="<?php echo $dado->nome; ?>" class="input-medium input-block-level"> 
       </div>
     </div>
-    
+    <div class="control-group">
+      <label class="control-label">Login:</label>
+      <div class="controls">
+        <input type="text" name="login" value="<?php echo $dado->login;?>" class="input-medium input-block-level"> 
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Senha:</label>
+      <div class="controls">
+        <input type="password" name="senha" value="" class="input-block-level input-medium"> 
+      </div>
+    </div>
     <div class="control-group">
       <label class="control-label">Email:</label>
       <div class="controls">
         <input type="email" name="email" value="<?php echo $dado->email;?>" class="input-block-level input-medium"> 
       </div>
     </div>
-    
     <div class="control-group">
       <label class="control-label">CPF:</label>
       <div class="controls">
@@ -54,13 +62,12 @@ $dado = $wpdb->get_row("SELECT a.*,
       <div class="controls">
         <select name="id_area" id="id_area">
           <option>Selecione um área</option>
-          <?php foreach($queryArea as $k => $v){?>
-              <option value="<?php echo $v->id?>" <?php echo $dado->id_area==$v->id?"selected":"";?> ><?php echo $v->area?></option>
+          <?php foreach($queryArea as $kA => $vA){?>
+              <option value="<?php echo $vA->id?>" <?php echo $dado->id_area==$vA->id?"selected":"";?> ><?php echo $vA->area?></option>
           <?php }?>
           <option value="outro">Outro</option>
         </select>
       </div>
-      
       <div id="campoArea" style="display:none;">
           <label class="control-label">Escreva sua área:</label>
           <div class="controls">
@@ -75,7 +82,6 @@ $dado = $wpdb->get_row("SELECT a.*,
         <textarea class="input-block-level" name="descricao"><?php echo $dado->descricao?></textarea>
       </div>
     </div>
-    
     <div class="control-group">
       <label class="control-label">Enviar currículo:</label>
       <?php if($dado->curriculo){ ?>
@@ -92,3 +98,5 @@ $dado = $wpdb->get_row("SELECT a.*,
   </form>
 </div>
 </div>
+
+
