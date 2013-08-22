@@ -63,8 +63,17 @@
 		  );
 		  
 		  $proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
-		  $location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		  
+		  if($_GET){
+			
+				$location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."&";
+				
+		  }else{
+			  
+			  $location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?";
+			  
+		  }
+		
 		  // Guardar os valores na tabela
 		  $wpdb->insert("wls_curriculo", $var );
 		  

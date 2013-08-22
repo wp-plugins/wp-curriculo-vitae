@@ -5,7 +5,7 @@ Plugin URI: http://wiliamluis.wordpress.com/plugin/
 Description: O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
 Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
 Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
-Version: 2.2
+Version: 2.3
 Author: William Luis da Silva
 Author URI: http://wiliamluis.wordpress.com/plugin/
 License: GPLv2
@@ -79,11 +79,28 @@ function ewp_create_table() {
 
 #funcão que faz o cadastro
 function cadastrar() {
+	
+	ob_start();
+	
 	include_once( plugin_dir_path( __FILE__ ) . 'formCadastro.php' );
+	
+	$formCadastro = ob_get_contents();
+	ob_end_clean();
+	
+	return $formCadastro;
 }
 
 function listCurriculos() {
+	
+	ob_start();
+	
 	include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculos.php' );
+	
+	$listCurriculos = ob_get_contents();
+	
+	ob_end_clean();
+	
+	return $listCurriculos;
 }
 
 #shortcode que chama formulario de cadastro
