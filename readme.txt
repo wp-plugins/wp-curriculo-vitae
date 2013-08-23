@@ -165,4 +165,14 @@ Upgrade from panel layout and form of registration.
 **Portugues**
 Atualização do layout para usuário final, possibilidade de editar os cadastro pelo o admin do site.
 
+= 2.3 =
+
+**Portugues**
+Atualização no retorno do cadastro.
+
+= 2.4 = 
+
+**Portugues**
+Atualização no edite do registro na painel do wp.
+
 == Screenshots ==

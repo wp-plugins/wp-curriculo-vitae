@@ -24,6 +24,7 @@ if(isset($_POST['delete_x'])||isset($_POST['delete_y'])){
 }
 
 function delete($id){
+	
 	global $wpdb;
 	
 	$proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
