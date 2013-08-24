@@ -1,4 +1,4 @@
-=== WP-Curriculo Vitae ===
+=== WP-Curriculo Vitae Free ===
 Contributors: Williamluis
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
 Requires at least: 3.5
