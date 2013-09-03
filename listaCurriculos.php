@@ -9,7 +9,7 @@ $buscar = $_POST['buscar'];
 $where = "";
 
 if($buscar){
-	$where .= " and (a.nome LIKE  '%".$buscar."%' or a.descricao LIKE '%".$buscar."%')";
+	$where .= " and ( LOWER(a.nome) LIKE  '%".strtolower($buscar)."%' or LOWER(a.descricao) LIKE '%".strtolower($buscar)."%' or LOWER(b.area) LIKE '%".strtolower($buscar)."%')";
 }
 
 ######### INICIO Paginação
@@ -52,7 +52,7 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
 ?>
         
         <form id="wp-curriculo-busca-rapida" method="post">
-          <input type="text" name="buscar" placeholder="Busca rápida..." > 
+          <input type="text" name="buscar" placeholder="Nome, área de atuação, experiência..." > 
         </form>
         
         <table class="table table-striped table-bordered">

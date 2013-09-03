@@ -1,6 +1,10 @@
 <?php
+
+global $wpdb;
+
 include_once( plugin_dir_path( __FILE__ ) . 'enviarCadastro.php' );
 wp_enqueue_script( 'jquery');	
+
 ?>
 	
 <div class="wp_conteiner">
@@ -38,7 +42,10 @@ wp_enqueue_script( 'jquery');
     <div class="control-group">
       <label class="control-label">CPF:</label>
       <div class="controls">
-        <input type="text" name="cpf" value="<?php echo @$_SESSION['cpf']?>" class="input-medium input-block-level"> 
+        <input type="text" name="cpf" id="cpf" value="<?php echo @$_SESSION['cpf']?>" class="input-medium input-block-level"> 
+        <img id="tick" src="<?php echo plugins_url('img/tick.png', __FILE__) ?>" width="16" height="16"/>
+        <img id="cross" src="<?php echo plugins_url('img/cross.png', __FILE__) ?>" width="16" height="16"/><br/>
+        <span id="msgCpf">Só é permitido um cadastro por CPF.</span>
       </div>
     </div>
     
@@ -94,4 +101,6 @@ wp_enqueue_script( 'jquery');
   </form>
 </div>
 
-<?php wp_enqueue_script('scriptJS', plugins_url('js/scriptArea.js', __FILE__)); ?>
+<?php wp_enqueue_script('scriptMask', plugins_url('js/jquery.maskedinput-1.1.4.pack.js', __FILE__)); ?>
+<?php wp_enqueue_script('scriptAreaJS', plugins_url('js/scriptArea.js', __FILE__)); ?>
+<?php wp_enqueue_script('script', plugins_url('js/script.js', __FILE__)); ?>

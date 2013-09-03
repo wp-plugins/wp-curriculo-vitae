@@ -6158,3 +6158,18 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+/* Ajustes */
+
+#tick, #cross, #msgCpf{ display:none; }
+
+.width400{ width:400px !important; }
+#formCadastro #cpf{ width: 120px;}
+#formCadastro #cep{ width: 85px; }
+#formCadastro .cep{ width: 90px; float: left; }
+#formCadastro .rua{ float: left; width: 245px; }
+#formCadastro #numero{ width:60px; }
+#formCadastro .numero{ float: left; width: 80px; margin-left: 5px; }
+#formCadastro .cidade{ float:left; width: 355px; }
+#formCadastro #estado{ width: 40px; }
+#formCadastro .estado{ width: 50px; float:left; margin-left: 5px; }

@@ -1,4 +1,4 @@
-<div class="pagination pagination-left" >
+<div class="wp-curriculo-pagination" >
       <ul class="unstyled" style="box-shadow:none !important; -webkit-box-shadow:none !important;">
 <?php
 $quant_pg = ceil($quantreg/$numreg);

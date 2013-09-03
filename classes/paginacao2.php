@@ -7,7 +7,7 @@ $quant_pg++;
 $server = $_SERVER['SERVER_NAME']; 
 $endereco = $_SERVER ['REQUEST_URI'];
 
-$page_id = "page_id=".$_GET['page_id'];
+$page_id = "page=".$_GET['page'];
 $pg = $_GET['pg'];
 
 $active = $i_pg2==@$pg?"class=\" active \"":"";

@@ -1,34 +1,172 @@
-.wp_conteiner{ width:100%; display:block; overflow:hidden; font-family:Arial, Helvetica, sans-serif;  }
+.wp_conteiner{
+width:100%;
+display:block;
+overflow:hidden;
+font-family:Arial, Helvetica, sans-serif;
+}
+#wp-curriculo-cadastro{
+width:400px;
+display:block;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+#wp-curriculo-cadastro label{
+margin-top:10px;
+display:block;
+}
+#wp-curriculo-cadastro input{
+width:100%;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+padding:5px;
+border:3px solid #c5c5c5;
+}
 
-#wp-curriculo-cadastro{ width:400px; display:block; font-size:13px; font-family:Arial, Helvetica, sans-serif; }
-#wp-curriculo-cadastro input{ width:100%; font-size:13px; font-family:Arial, Helvetica, sans-serif; padding: 5px; border: 3px solid #c5c5c5; }
-#wp-curriculo-cadastro select{ padding: 5px !important; border: 3px solid #c5c5c5 !important; }
-#wp-curriculo-cadastro areatext{ padding: 5px; border: 3px solid #c5c5c5; }
-#wp-curriculo-cadastro input[type=file]{ border:none; }
-#wp-curriculo-cadastro #id_area{ width:100%; height:30px; background: #f9f9f9; border: 1px solid #ccc; box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1); }
-#wp-curriculo-cadastro textarea{ width:100%; height:80px; font-size:13px; font-family:Arial, Helvetica, sans-serif; }
+#wp-curriculo-cadastro #cpf{
+width:90%;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+padding:5px;
+border:3px solid #c5c5c5;
+}
 
-.wp-curriculo-pagination{ width:300px; display:block; overflow:hidden; margin:0 auto; }
-.wp-curriculo-pagination ul{ list-style:none; font-size:14px; font-family:Arial, Helvetica, sans-serif; margin:0px; }
-.wp-curriculo-pagination ul li{ list-style:none; float:left; padding:1px; margin:0 5px 0 5px; }
-.wp-curriculo-pagination ul li:first-child{ margin:0 5px 0 0px; }
-.wp-curriculo-pagination ul li:last-child{ margin:0 0px 0 5px; }
-.wp-curriculo-pagination ul li a{ color:#666; text-decoration:none; text-shadow:#CCC 0px 0px 2px; }
-.wp-curriculo-pagination ul li.active a { color:#CCC; text-decoration:none; cursor:none; }
+#wp-curriculo-cadastro select{
+width:100% !important;
+padding:5px !important;
+border:3px solid #c5c5c5 !important;
+}
+#wp-curriculo-cadastro areatext{
+padding:5px;
+border:3px solid #c5c5c5;
+}
+#wp-curriculo-cadastro input[type=file]{
+border:none;
+}
+#wp-curriculo-cadastro #id_area{
+width:100%;
+height:30px;
+background:#f9f9f9;
+border:1px solid #ccc;
+/*box-shadow*/
+-webkit-box-shadow:inset 1px 1px 1px rgba(0,0,0,0.1);
+   -moz-box-shadow:inset 1px 1px 1px rgba(0,0,0,0.1);
+        box-shadow:inset 1px 1px 1px rgba(0,0,0,0.1);
+}
+#wp-curriculo-cadastro textarea{
+width:100%;
+height:80px;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+#wp-curriculo-cadastro #cpf{ width: 90px;}
+#wp-curriculo-cadastro #cep{ width: 60px; }
+#wp-curriculo-cadastro .cep{ width: 90px;float: left; }
+#wp-curriculo-cadastro .rua{ float: left; width: 200px; }
+#wp-curriculo-cadastro .numero{ float: left; width: 80px; margin-left: 30px; }
+#wp-curriculo-cadastro .cidade{ float:left; width: 320px; }
+#wp-curriculo-cadastro #estado{ width: 30px; }
+#wp-curriculo-cadastro .estado{ width: 50px; float:left; margin-left: 30px; }
 
-#wp-curriculo-busca-rapida{ width:97%; display:block; font-size:13px; font-family:Arial, Helvetica, sans-serif; margin-bottom:20px; }
-#wp-curriculo-busca-rapida input{ width:100%; font-size:13px; font-family:Arial, Helvetica, sans-serif; }
+.wp-curriculo-pagination{
+width:300px;
+display:block;
+overflow:hidden;
+margin:0 auto;
+}
+.wp-curriculo-pagination ul{
+list-style:none;
+font-size:14px;
+font-family:Arial, Helvetica, sans-serif;
+margin:0px;
+}
+.wp-curriculo-pagination ul li{
+list-style:none;
+float:left;
+padding:1px;
+margin:0 5px 0 5px;
+}
+.wp-curriculo-pagination ul li:first-child{
+margin:0 5px 0 0px;
+}
+.wp-curriculo-pagination ul li:last-child{
+margin:0 0px 0 5px;
+}
+.wp-curriculo-pagination ul li a{
+color:#666;
+text-decoration:none;
+text-shadow:#CCC 0px 0px 2px;
+}
+.wp-curriculo-pagination ul li.active a{
+color:#CCC;
+text-decoration:none;
+cursor:none;
+}
+#wp-curriculo-busca-rapida{
+width:97%;
+display:block;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+margin-bottom:20px;
+}
+#wp-curriculo-busca-rapida input{
+width:100%;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+#wp-curriculo-busca-rapida select{
+width: 102.7%;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+.wp-curriculo-table{
+/*border-radius*/
+-webkit-border-radius:5px;
+   -moz-border-radius:5px;
+        border-radius:5px;
+font-size:13px;
+font-family:Arial, Helvetica, sans-serif;
+}
+.wp-curriculo-table tbody{
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+}
+.wp-curriculo-table td{
+border-right:#e7e7e7 solid 1px;
+}
+.wp-curriculo-widgetBuscar{
+width:270px;
+display:block;
+margin:20px auto;
+}
+.wp-curriculo-widgetBuscar h4{
+width:100%;
+margin:0 auto 5px auto;
+}
+.wp-curriculo-widgetBuscar .formWidgetBusca{
+width:100%;
+display:block;
+margin:10px auto;
+}
+.wp-curriculo-widgetBuscar .formWidgetBusca .btBuscar{
+width:250px;
+}
+.wp-curriculo-widgetLogina{
+width:270px;
+display:block;
+margin:20px auto;
+}
+.wp-curriculo-widgetLogina h4{
+width:100%;
+margin:0 auto 5px auto;
+}
+.wp-curriculo-widgetLogina input{
+width:250px;
+margin-bottom:5px;
+}
+.wp-curriculo-widgetLogina .btnLogar{
+width:60px;
+}
 
-.wp-curriculo-table{ border-radius:5px; font-size:13px; font-family:Arial, Helvetica, sans-serif; }
-.wp-curriculo-table tbody{ border-bottom-left-radius:5px; border-bottom-right-radius:5px; }
-.wp-curriculo-table td{ border-right:#e7e7e7 solid 1px; }
+#tick, #cross, #msgCpf{ display:none; }
+#msgCpf{ color:#F00; }
 
-.wp-curriculo-widgetBuscar{ width:270px; display:block; margin:20px auto; }
-.wp-curriculo-widgetBuscar h4{ width:100%; margin:0 auto 5px auto; }
-.wp-curriculo-widgetBuscar .formWidgetBusca{ width:100%; display:block; margin:10px auto; }
-.wp-curriculo-widgetBuscar .formWidgetBusca .btBuscar{ width:250px; }
-
-.wp-curriculo-widgetLogina{ width:270px; display:block; margin:20px auto; }
-.wp-curriculo-widgetLogina h4{ width:100%; margin:0 auto 5px auto; }
-.wp-curriculo-widgetLogina input{ width:250px; margin-bottom:5px; }
-.wp-curriculo-widgetLogina .btnLogar{ width:60px; }

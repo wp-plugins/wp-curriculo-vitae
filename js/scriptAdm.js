@@ -30,7 +30,7 @@
 		}else{
 			jQuery.ajax({
 				type: 'POST',
-				url: 'wp-admin/admin-ajax.php',
+				url: 'admin-ajax.php',
 				data: 'action=checkCpf&cpf='+ cpf,
 				cache: false,
 				success: function(response){

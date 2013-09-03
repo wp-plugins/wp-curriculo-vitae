@@ -4,7 +4,6 @@
 	// Desta forma, se um usuário permanecer no site por 30 minutos,
 	// será registado três vezes na tabela.
 	 
-	 
 	 $cadastrar 		= @$_POST["cadastrar"];
 	 $cadastrar_x 		= @$_POST["cadastrar_x"];
 	 
@@ -45,19 +44,19 @@
 		  $tipo = explode(".", $_FILES['curriculo']['name']);
 		  $nome2 = str_replace(" ", "", $nome);
 		  
-		  if(@$_SESSION['logado']==1&&$_FILES['curriculo']['name']){
-			  @unlink("wp-content/uploads/curriculos/".@$_SESSION['curriculo']);
-			  $_SESSION['curriculo'] = $nome2.".".$tipo[1];
+		  if(@$_POST['admin']==1&&$_FILES['curriculo']['name']){
+			  @unlink("wp-content/uploads/curriculos/".@$dado->curriculo);
+			  $dado->curriculo = $nome2.".".$tipo[1];
 		  }
 		  
 		  move_uploaded_file($_FILES['curriculo']['tmp_name'], $uploaddir. $nome2.".".$tipo[1]);
 
 		  // Registar os IPs na base de dados
 		  $var = array(
-			'nome' 		=> $nome,
+			'nome' 			=> $nome,
 			'email' 		=> $email,
-			'cpf' 		=> $cpf,
-			'id_area' 	=> $id_area,
+			'cpf' 			=> $cpf,
+			'id_area' 		=> $id_area,
 			'descricao' 	=> $descricao,
 			'curriculo' 	=> $nome2.".".$tipo[1],
 		  );
@@ -73,13 +72,30 @@
 			  $location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?";
 			  
 		  }
-		
-		  // Guardar os valores na tabela
-		  $wpdb->insert("wls_curriculo", $var );
 		  
-		  $path = $location.'&msg=1';
+		  if(@$_POST['admin']==1){
+			  
+			  // Guardar os valores na tabela
+			  $wpdb->update( "wls_curriculo", $var, array('id' => $_POST['id']), $format = null, $where_format = null );
+			  echo "<script>location.href='?page=novo-cadastro&id_cadastro=".$_POST['id']."&msg=2'</script>";
+			  
+		  }else{
 		  
-		  echo "<script>location.href='".$path."'</script>";
+			  // Guardar os valores na tabela
+			  $wpdb->insert("wls_curriculo", $var );
+			  
+			  $path = $location.'&msg=1';
+			  
+			  if(@$_POST['admin']==1){
+
+				  echo "<script>location.href='?page=novo-cadastro&msg=1'</script>";
+				  
+			  }else{
+				  
+				  echo "<script>location.href='".$path."'</script>";
+				  
+			  }
+		  }
 	 }
 	
 ?>

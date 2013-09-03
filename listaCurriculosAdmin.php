@@ -84,7 +84,9 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
 ?>
 
     <div class="container-fluid">
-      <h2>Lista de currículos</h2>
+      <h2 style="float:left;">Lista de currículos</h2>
+      
+      <div style="border-radius:5px; background:#f1f1f1; font-size:12px; height:15px; width:84px; padding:5px; float:left; margin-top: 20px;margin-left: 15px;"><a href="?page=novo-cadastro">Novo cadastro</a></div>
       
 	  <?php if(@$_GET['msg']==2){ ?>
   
@@ -143,11 +145,8 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
                 
                 <td style="text-align:center;">
                 	
-                    <a href="#edite_<?php echo $x; ?>" rel="edite[inline]">
+                    <a href="?page=novo-cadastro&id_cadastro=<?php echo $v->id?>" >
                       <img src="<?php echo plugins_url('img/user_edit.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->nome?>" /></a><br />
-                    
-                    <?php include( plugin_dir_path( __FILE__ ) . 'formEdite.php' ); ?>
-                    
                     
                 </td>
                 
@@ -169,5 +168,3 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
       <?php include( plugin_dir_path( __FILE__ ) . 'classes/paginacao2.php' ); ?>
       
     </div>
-
-<?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>

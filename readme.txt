@@ -18,16 +18,19 @@ O plugin trabalha com duas versoes:
  
 **Versao gratuita:**
  
-1. Cadastrar o curriculo;
+1. Cadastrar o curriculo com válidação de CPF;
 2. Listagem de curriculos com sistema de busca.
+3. Cadastrar e editar atraves de area restrita;
  
 **Versao paga:**
  
-1. Cadastrar o curriculo;
-2. Editar atraves de area restrita;
+1. Cadastrar e editar o curriculo para o usuario final;
+2. Cadastrar e editar atraves de area restrita;
 3. Widget de login na area restritra;
-4. Listagem de curriculos com sistema de busca;
+4. Listagem de curriculos com sistema de busca por: Nome, especificacoes, area de trabalho e local;
 5. Widget de Busca de Curriculos.
+6.Exporta em XML.
+7. Cadastros com Válidação de CPF e campos de endereço.
 
 Para comprar a versao paga acesse a pagina [Wiliamluis](http://wiliamluis.wordpress.com/plugin/) ou acesse pelo menu da versao gratuita.
  
@@ -163,7 +166,7 @@ Upgrade from panel layout and form of registration.
 = 2.2 =
 
 **Portugues**
-Atualização do layout para usuário final, possibilidade de editar os cadastro pelo o admin do site.
+Atualização do layout para usuario final, possibilidade de editar os cadastro pelo o admin do site.
 
 = 2.3 =
 
@@ -174,5 +177,12 @@ Atualização no retorno do cadastro.
 
 **Portugues**
 Atualização no edite do registro na painel do wp.
+
+= 3.5 = 
+
+**Portugues**
+Atualização no cadastro com validacao do CPF.
+Novo painel de cricao de cadastro pelo painel admin e alteracoes de registros.
+Atualização no campo de busca rápida permitindo atualizar por nome, especificacoes e area de trabalho.
 
 == Screenshots ==

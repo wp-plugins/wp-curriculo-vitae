@@ -14,15 +14,18 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
     <p>O <strong>WP-Curriculo Vitae</strong> e um plugin que permite que usuários a cadastrem seu currículo no site para divulgação online ou para uso do site.</p>
     <p>O plugin trabalha com duas versoes:</p>
     <p><strong>Versão gratuita:</strong></p>
-    <p>1. Cadastrar o currículo;<br>
-    2. Listagem de currículos com sistema de busca.</p>
+    <p>1. Cadastrar o curriculo com válidação de CPF;<br/>
+    2. Listagem de curriculos com sistema de busca;<br/>
+    3. Cadastrar e editar atraves de area restrita.</p>
     <p>Para acessar a versão gratuita&nbsp;<a title="Plugin WP - Currículo Vitae" href="http://wordpress.org/extend/plugins/wp-curriculo-vitae/" target="_blank">clique aqui</a>.</p>
     <p><strong>Versão paga:</strong></p>
-    <p>1. Cadastrar o currículo;<br>
-    2. Editar atráves de área restrita;<br>
-    3. Widget de login na área restrita;<br>
-    4. Listagem de currículos com sistema de busca;<br>
-    5. Widget de Busca de Currículos.</p>
+    <p>1. Cadastrar e editar o curriculo para o usuario final;<br/>
+    2. Cadastrar e editar atraves de area restrita;<br/>
+    3. Widget de login na area restritra;<br/>
+    4. Listagem de curriculos com sistema de busca por: Nome, especificacoes, area de trabalho e local;<br/>
+    5. Widget de Busca de Curriculos.<br/>
+    6. Exporta em XML.<br/>
+    7. Cadastros com Válidação de CPF e campos de endereço.</p>
 
     <p>Para comprar a versão paga clique no botão abaixo:</p>
 
