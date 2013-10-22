@@ -170,3 +170,5 @@ width:60px;
 #tick, #cross, #msgCpf{ display:none; }
 #msgCpf{ color:#F00; }
 
+.wp-curriculo-copywrite{ font-size:10px; text-align:center; margin:5px auto 5px auto; }
+.wp-curriculo-copywrite a{ text-decoration:none; color:#09F; }

@@ -5,7 +5,7 @@ Plugin URI: http://wiliamluis.wordpress.com/plugin/
 Description: O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
 Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
 Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
-Version: 3.5
+Version: 3.5.1
 Author: William Luis da Silva
 Author URI: http://wiliamluis.wordpress.com/plugin/
 License: GPLv2
@@ -83,14 +83,17 @@ function menu_curriculo_vitae() {
 	include_once( plugin_dir_path( __FILE__ ) . 'informativo.php' );
 }
 
+/*Função que carrega a página de novo cadastro no painel do admin*/
 function submenu_novo_cadastro() {
 	include_once( plugin_dir_path( __FILE__ ) . 'novoCadastro.php' );
 }
 
+/*Função que carrega a página da listagem de currículos cadastrado no painel do admin*/
 function submenu_lista_curriculos() {
 	include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculosAdmin.php' );
 }
 
+/*Função que carrega a página de áreas de serviços no painel do admin*/
 function submenu_areas() {
 	include_once( plugin_dir_path( __FILE__ ) . 'areasServicos.php' );
 }
@@ -104,7 +107,7 @@ function ewp_create_table() {
 #add_action('wp_ajax_checkCpf', 'checkCpf');
 add_action('wp_ajax_nopriv_checkCpf', 'checkCpf');
 
-#funcão que faz o cadastro
+#funcão que troca o shortcode 'formCadastro' pelo formulário de cadastro
 function cadastrar() {
 	
 	ob_start();
@@ -117,6 +120,7 @@ function cadastrar() {
 	return $formCadastro;
 }
 
+#Função que troca o shortcode 'listCadastro' pela lista de currículos cadastrado
 function listCurriculos() {
 	
 	ob_start();

@@ -29,7 +29,7 @@ O plugin trabalha com duas versoes:
 3. Widget de login na area restritra;
 4. Listagem de curriculos com sistema de busca por: Nome, especificacoes, area de trabalho e local;
 5. Widget de Busca de Curriculos.
-6.Exporta em XML.
+6. Exporta em XML.
 7. Cadastros com Válidação de CPF e campos de endereço.
 
 Para comprar a versao paga acesse a pagina [Wiliamluis](http://wiliamluis.wordpress.com/plugin/) ou acesse pelo menu da versao gratuita.

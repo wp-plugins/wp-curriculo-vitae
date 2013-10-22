@@ -9,6 +9,7 @@ wp_enqueue_script( 'bootstrapJS', plugins_url('js/bootstrap.min.js', __FILE__));
 wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FILE__));
 
 ?>
+
 <div class="container-fluid">
     <h2>Informações do plugin</h2>
     <p>O <strong>WP-Curriculo Vitae</strong> e um plugin que permite que usuários a cadastrem seu currículo no site para divulgação online ou para uso do site.</p>
@@ -29,13 +30,15 @@ wp_enqueue_script( 'prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FI
 
     <p>Para comprar a versão paga clique no botão abaixo:</p>
 
-    <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+
+<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
 <form target="pagseguro" action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post">
 <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
 <input type="hidden" name="code" value="2A503DF5D6D66EDFF46EBFA2EED8B23A" />
 <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/164x37-comprar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
 </form>
 <!-- FINAL FORMULARIO BOTAO PAGSEGURO -->
+
 
     <p><strong>Como utilizar</strong></p>
     <p>Para exibir o formulário de cadastro, crie uma pagina e coloque o shortcode <strong>[formCadastro]</strong>.</p>
