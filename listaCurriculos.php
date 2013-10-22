@@ -51,7 +51,7 @@ wp_enqueue_style( "prettyPhotoCSS", plugins_url('css/prettyPhoto.css', __FILE__)
 wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FILE__));	
 ?>
 
-<div class="wp-curriculo-copywrite">Wp-currículo Vitae - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
+<div class="wp-curriculo-copywrite">Wp-currículo Vitae Free- <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
         
         <form id="wp-curriculo-busca-rapida" method="post">
           <input type="text" name="buscar" placeholder="Nome, área de atuação, experiência..." > 
@@ -109,4 +109,4 @@ wp_enqueue_script('prettyPhotoJS', plugins_url('js/jquery.prettyPhoto.js', __FIL
 
 <?php wp_enqueue_script('scriptJS', plugins_url('js/script.js', __FILE__)); ?>
 
-<div class="wp-curriculo-copywrite">Wp-currículo Vitae - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
+<div class="wp-curriculo-copywrite">Wp-currículo Vitae Free - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>

@@ -9,7 +9,7 @@ wp_enqueue_script( 'jquery');
 	
 <div class="wp_conteiner">
   
-  <div class="wp-curriculo-copywrite">Wp-currículo Vitae - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
+  <div class="wp-curriculo-copywrite">Wp-currículo Vitae Free - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
   
   <?php if(@$_GET['msg']==1){ ?>
   
@@ -101,7 +101,7 @@ wp_enqueue_script( 'jquery');
 
       <button type="submit" name="cadastrar" class="btn btn-primary">Cadastrar</button>
   </form>
-  <div class="wp-curriculo-copywrite">Wp-currículo Vitae - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
+  <div class="wp-curriculo-copywrite">Wp-currículo Vitae Free - <a href="http://www.williamluis.com.br/plugin/" target="_blank" title="William Luis">williamluis</a></div>
 </div>
 
 <?php wp_enqueue_script('scriptMask', plugins_url('js/jquery.maskedinput-1.1.4.pack.js', __FILE__)); ?>
