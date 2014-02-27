@@ -40,7 +40,7 @@ if ( $wpdb->get_var( "SHOW TABLES LIKE '$tablename'" ) != $tablename || $wpdb->g
   $upload_dir = $upload_dir . '/curriculos';
   
   if (! is_dir($upload_dir)) {
-	 mkdir( $upload_dir, 777 );
+	 mkdir( $upload_dir, 0777 );
   }
 
 }
