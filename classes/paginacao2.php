@@ -1,5 +1,5 @@
-<div class="pagination pagination-left" >
-      <ul class="unstyled" style="box-shadow:none !important; -webkit-box-shadow:none !important;">
+
+      <ul class="pagination pagination-left" style="box-shadow:none !important; -webkit-box-shadow:none !important;">
 <?php
 $quant_pg = ceil($quantreg/$numreg);
 $quant_pg++;
@@ -17,7 +17,7 @@ if ( $pg > 0) {
 	
           
         
-echo "<li><a href='".$PHP_SELF."?".@$page_id."pg=".($pg-1) ."'class=pg><b>&laquo; anterior</b></a></li>";
+echo "<li><a href='".$PHP_SELF."?".@$page_id."&pg=".($pg-1) ."'class=pg><b>&laquo; anterior</b></a></li>";
 } else {
 echo "<li class=\"active\"><a href='#'><b>&laquo; anterior</b></a></li>";
 }
@@ -41,5 +41,5 @@ echo "<li class=\"active\"><a href='#'><b>próximo &raquo;</b></a></li>";
 }
 ?>
 </ul>
-    </div>
+
     

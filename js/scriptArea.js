@@ -6,10 +6,11 @@
 	$("select#id_area").change(function () {
 		//alert($("#id_area option:selected").val());
 		var option = $("select#id_area option:selected").val();
+		
 		if(option == "outro"){
-			$("div#campoArea").css("display", "block");
+			$("div#campoArea").fadeIn('slow');
 		}else{
-			$("div#campoArea").css("display", "none");
+			$("div#campoArea").fadeOut('slow');
 		}
 	  
 	})

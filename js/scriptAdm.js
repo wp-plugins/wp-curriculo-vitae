@@ -12,8 +12,11 @@
 
 	//Mascara para o campo CPF
 	$(document).ready(function(){
-		if($("#cpf").length){
+		if($("#cpf").length || $("#cep").length ){
 			$("#cpf").mask("999.999.999-99");
+			$("#cep").mask("99999-999");
+			$("#telefone").mask("(99)9999-9999");
+			$("#celular").mask("(99)99999-9999");
 		}
 	});
 	
@@ -56,6 +59,77 @@
 	
 	}
 	
+	//Preenche o o endereço com o cep preenchido 
+	$(document).ready(function(){
+		$('#cep').keyup(getEndereco); 
+	});
+	
+	function getEndereco() {
+		// Se o campo CEP não estiver vazio
+		if($.trim($("#cep").val()) != ""){
+			/*
+			Para conectar no serviço e executar o json, precisamos usar a função
+			getScript do jQuery, o getScript e o dataType:"jsonp" conseguem fazer o cross-domain, os outros
+			dataTypes não possibilitam esta interação entre domínios diferentes
+			Estou chamando a url do serviço passando o parâmetro "formato=javascript" e o CEP digitado no formulário
+			http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val()
+			*/
+			$.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){
+				// o getScript dá um eval no script, então é só ler!
+				//Se o resultado for igual a 1
+				if (resultadoCEP["tipo_logradouro"] != '') {
+					if (resultadoCEP["resultado"]) {
+						// troca o valor dos elementos
+						$("#rua").val(unescape(resultadoCEP["tipo_logradouro"]) + " " + unescape(resultadoCEP["logradouro"]));
+						$("#bairro").val(unescape(resultadoCEP["bairro"]));
+						$("#cidade").val(unescape(resultadoCEP["cidade"]));
+						$("#estado").val(unescape(resultadoCEP["uf"]));
+						$("#numero").focus();
+					}
+				}
+			});
+		}
+	}
+	
+	//carregar o bairro baseando na cidade que foi escolhida
+	$(document).ready(function(){
+		$('#estado').change(carregar_cidade);
+		$('#cidade').change(carregar_bairro); 
+	});
+	
+	function carregar_cidade(){
+		var estado = $('#estado').val();
+		$('#cidade').html("<option value=\"\">Carregando...</option>");
+		jQuery.ajax({
+			type: 'POST',
+			url: 'wp-admin/admin-ajax.php',
+			data: 'action=carregar_cidade&estado='+ estado,
+			cache: false,
+			success: function(response){
+				//alert(response);
+				$('#cidade').removeAttr('disabled');
+				$('#cidade').html(response);
+			}
+		});
+	}
+	
+	function carregar_bairro(){
+		var estado = $('#estado').val();
+		var cidade = $('#cidade').val();
+		$('#bairro').html("<option value=\"\">Carregando...</option>");
+		jQuery.ajax({
+			type: 'POST',
+			url: 'wp-admin/admin-ajax.php',
+			data: 'action=carregar_bairro&estado=' + estado + '&cidade=' + cidade,
+			cache: false,
+			success: function(response){
+				//alert(response);
+				$('#bairro').removeAttr('disabled');
+				$('#bairro').html(response);
+			}
+		});
+	}
+	
 	function dirname (path) {
 	  // http://kevin.vanzonneveld.net
 	  // +   original by: Ozh
@@ -68,5 +142,78 @@
 	  // *     returns 3: '/dir'
 	  return path.replace(/\\/g, '/').replace(/\/[^\/]*\/?$/, '');
 	}
+	
+	function removeCampo() { 
+		$(".removerFormação").unbind("click"); 
+		$(".removerFormação").bind("click", function () { 
+			i=0; 
+			$("div.cursoacademico").each(function () { 
+				i++; 
+			}); 
+			
+			if (i>1) { 
+				$(this).parent().remove(); 
+			} 
+		}); 
+	} 
+	
+	removeCampo(); 
+	
+	$(".adicionarNovaFormacao").click(function () { 
+		novoCampo = $("div.cursoacademico:first").clone();
+		novoCampo.find("input").val(""); 
+		novoCampo.insertAfter("div.cursoacademico:last"); removeCampo(); 
+	});
+	
+	
+
+	function removeCampo2() { 
+		$(".removerExperiencia").unbind("click"); 
+		$(".removerExperiencia").bind("click", function () { 
+			i=0; 
+			
+			$("div.experienciaprofissional").each(function () { 
+				i++; 
+			}); 
+			
+			if (i>1) { 
+				$(this).parent().remove(); 
+			} 
+		}); 
+	} 
+
+	removeCampo2(); 
+
+	$(".adicionarNovaExperiencia").click(function () { 
+		novoCampo = $("div.experienciaprofissional:first").clone();
+		novoCampo.find("input").val(""); 
+		novoCampo.insertAfter("div.experienciaprofissional:last"); removeCampo2(); 
+	});
+
+	
+
+	function removeCampo3() { 
+		$(".removerCursoPalestra").unbind("click"); 
+		$(".removerCursoPalestra").bind("click", function () { 
+			i=0; 
+			
+			$("div.cursospalestras").each(function () { 
+				i++; 
+			}); 
+			
+			if (i>1) { 
+				$(this).parent().remove(); 
+			} 
+		}); 
+	} 
+
+	removeCampo3(); 
+
+	$(".adicionarNovaCursoPalestra").click(function () { 
+		novoCampo = $("div.cursospalestras:first").clone();
+		novoCampo.find("input").val(""); 
+		novoCampo.insertAfter("div.cursospalestras:last"); removeCampo3(); 
+	});
+
 	
 }(jQuery));

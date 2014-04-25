@@ -1,13 +1,11 @@
 <?php
 /*
-Plugin Name: WP-Currículo Vitae - Free
+Plugin Name: WP-Currículo Vitae Free
 Plugin URI: http://wiliamluis.wordpress.com/plugin/
-Description: O *WP-Curriculo Vitae* possibilita o cadastro de informações profissional do usuário, onde que esse cadastro vai se torna publico.
-Terá uma lista com as informações dos cadastro, podendo entrar em contato com o cadastrado.
-Na Própria lista pode buscar um nome ou uma especificação, facilitando a busca.
-Version: 3.5.2
+Description: O WP-Curriculo Vitae e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
+Version: 4.5
 Author: William Luis da Silva
-Author URI: http://wiliamluis.wordpress.com/plugin/
+Author URI: http://www.williamluis.com.br/wp-cv-demonstracao/
 License: GPLv2
 */
 
@@ -19,12 +17,48 @@ License: GPLv2
 // muitos dados na base de dados.
 
 
+
+
 // Registamos a função para correr na ativação do plugin
-register_activation_hook( __FILE__, 'ewp_install_hook' );
+register_activation_hook( __FILE__, 'wpcvf_install' );
 
-register_deactivation_hook( __FILE__, 'ewp_unistall_hook' );
+add_action('init', 'wpcvf_create_table' ); #Cria o banco de dados e a pasta onde vai ser salvo os arquivos
 
-function ewp_install_hook() {
+add_action( 'admin_head', 'wpcvf_icone' );
+
+add_action('wp_head','wpcvf_ajaxurl');
+
+#shortcode que chama formulario de cadastro
+add_shortcode( 'formCadastro', 'wpcvf_cadastrar');
+	
+#shortcode para listar os currículos
+add_shortcode( 'listCurriculos', 'wpcvf_listCurriculos' );
+
+add_action('admin_menu', 'wpcvf_configuracoes'); #Cria um painel do plugin no administrativo do wordpress
+
+//Adiciona a funcao extra votos aos hooks ajax do WordPress.
+add_action('wp_ajax_wpcvf_checkCpf', 'wpcvf_checkCpf');
+add_action('wp_ajax_nopriv_wpcvf_checkCpf', 'wpcvf_checkCpf');
+
+add_action('wp_ajax_wpcvf_carregar_cidade', 'wpcvf_carregar_cidade');
+add_action('wp_ajax_nopriv_wpcvf_carregar_cidade', 'wpcvf_carregar_cidade');
+
+add_action('wp_ajax_wpcvf_carregar_bairro', 'wpcvf_carregar_bairro');
+add_action('wp_ajax_nopriv_wpcvf_carregar_bairro', 'wpcvf_carregar_bairro');
+
+add_action('wp_ajax_wpcvf_verificarArquivo', 'wpcvf_verificarArquivo');
+add_action('wp_ajax_nopriv_wpcvf_verificarArquivo', 'wpcvf_verificarArquivo');
+
+add_action('wp_ajax_wpcvf_editArea', 		'wpcvf_editArea');
+add_action('wp_ajax_noprivf_wpcv_editArea', 'wpcvf_editArea');
+
+
+add_action('wp_print_styles', 'wpcvf_estilos'); #Onde é chamado os CSSs do plugin - Visual externo do plugin
+
+register_deactivation_hook( __FILE__, 'wpcvf_unistall' );
+
+function wpcvf_install() {
+	define('DISALLOW_FILE_EDIT', true );
   // Vamos testar a versão do PHP e do WordPress
   // caso as versões sejam antigas, desativamos
   // o nosso plugin.
@@ -34,18 +68,117 @@ function ewp_install_hook() {
   }
 }
 
-function ewp_unistall_hook(){
-	include_once( plugin_dir_path( __FILE__ ) . 'uninstall.php' );
+#Função que faz instalação do banco e cria a pasta
+function wpcvf_create_table() {
+  include_once( plugin_dir_path( __FILE__ ) . 'install.php' );
 }
 
-function checkCpf()
+function wpcvf_icone(){
+	wp_enqueue_style( 'wpvcStyle', plugins_url('css/wp_curriculo_style.css', __FILE__) );
+}
+
+function wpcvf_ajaxurl() {
+?>
+
+<script type="text/javascript">
+
+/*Função Pai de Mascaras*/
+function Mascara(o,f){
+		v_obj=o
+		v_fun=f
+		setTimeout("execmascara()",1)
+}
+
+/*Função que Executa os objetos*/
+function execmascara(){
+		v_obj.value=v_fun(v_obj.value)
+}
+
+/*Função que Determina as expressões regulares dos objetos*/
+function leech(v){
+		v=v.replace(/o/gi,"0")
+		v=v.replace(/i/gi,"1")
+		v=v.replace(/z/gi,"2")
+		v=v.replace(/e/gi,"3")
+		v=v.replace(/a/gi,"4")
+		v=v.replace(/s/gi,"5")
+		v=v.replace(/t/gi,"7")
+		return v
+}
+
+/*Função que permite apenas numeros*/
+function Integer(v){
+		return v.replace(/\D/g,"")
+}
+
+/*Função que padroniza CPF*/
+function Cpf(v){
+		v=v.replace(/\D/g,"")                                   
+		v=v.replace(/(\d{3})(\d)/,"$1.$2")         
+		v=v.replace(/(\d{3})(\d)/,"$1.$2")         
+																						 
+		v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+
+		return v
+}
+
+var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+</script>
+<?php
+}
+
+function wpcvf_configuracoes() {
+	
+	#Cria um menu dentro do menu options
+	add_menu_page('Currículo Vitae', 'Currículo Vitae', 'manage_options', 'curriculo_vitae', 'curriculo_vitae', '');
+	
+	add_submenu_page('curriculo_vitae', 'Informações', 'Informações', 'manage_options', 'curriculo_vitae','curriculo_vitae', '');
+	
+	add_submenu_page('curriculo_vitae', 'Configuração de e-mails', 'Configuração de e-mails', 'manage_options', 'configuracao-emails','wpcvf_configuracao_emails', '');
+	
+	#Submenu para fazer um novo cadastro
+	add_submenu_page('curriculo_vitae', 'Novo cadastro', 'Novo cadastro', 'manage_options', 'formulario-admin', 'wpcvf_formulario_admin');
+	
+	#Submenu que exibe a lista de currículos cadastrados
+	add_submenu_page('curriculo_vitae', 'Lista de currículos', 'Lista de currículos', 'manage_options', 'lista-de-curriculos-admin', 'wpcvf_lista_curriculos_admin');
+	
+	#Submenu que exibe as áreas de serviços cadastrada e possibilita cadastrar novas áreas  
+	add_submenu_page('curriculo_vitae', 'Áreas de serviços', 'Áreas de serviços', 'manage_options', 'areas-de-servicos', 'wpcvf_areas' );
+
+}
+
+function curriculo_vitae() {
+	include_once( plugin_dir_path( __FILE__ ) . 'admin/informativo.php' );
+}
+
+function wpcvf_configuracao_emails() {
+	include_once( plugin_dir_path( __FILE__ ) . 'admin/configuracao_emails.php' );
+}
+
+function wpcvf_formulario_admin() {
+	include_once( plugin_dir_path( __FILE__ ) . 'admin/formulario.php' );
+}
+
+function wpcvf_lista_curriculos_admin() {
+	include_once( plugin_dir_path( __FILE__ ) . 'admin/lista_curriculos.php' );
+}
+
+function wpcvf_areas() {
+	include_once( plugin_dir_path( __FILE__ ) . 'admin/lista_areas_servicos.php' );
+}
+
+function wpcvf_estilos() {
+	include_once( plugin_dir_path( __FILE__ ) . 'style.php' );
+}
+
+function wpcvf_checkCpf()
 {
 	global $wpdb;
 	global $_POST;
 		
 	$cpf = $_POST['cpf'];
 
-	$sqlCheckCpf = "SELECT cpf FROM wls_curriculo where cpf = '".$cpf."'";
+	$sqlCheckCpf = "SELECT cpf FROM ".$wpdb->prefix."wls_curriculo where cpf = '".$cpf."'";
     $queryCheckCpf = $wpdb->get_results( $sqlCheckCpf );
 	
 	$check = array();
@@ -54,94 +187,128 @@ function checkCpf()
 	
 }
 
-add_action( 'init', 'ewp_create_table' ); #Cria o banco de dados e a pasta onde vai ser salvo os arquivos
-
-add_action('wp_print_styles', 'estilos'); #Onde é chamado os CSSs do plugin - Visual externo do plugin
-
-add_action('admin_menu', 'ewp_pagina_opcoes'); #Cria um painel do plugin no administrativo do wordpress
- 
-function ewp_pagina_opcoes() {
-  	
-	#Cria um menu dentro do menu options
-	add_menu_page( 'WP-Currículo Vitae Free - Painel', 'Currículo Vitae Free', 'manage_options', 'curriculo_vitae','menu_curriculo_vitae', plugins_url('img/User-Files-icon2.png', __FILE__) );
+function wpcvf_carregar_cidade(){
 	
-	#Submenu para fazer um novo cadastro
-	add_submenu_page( 'curriculo_vitae', 'Novo cadastro', 'Novo cadastro', 'manage_options', 'novo-cadastro', 'submenu_novo_cadastro' );
+	global $wpdb;
+	global $_POST;
+		
+	$estado = $_POST['estado'];
 	
-	#Submenu que exibe a lista de currículos cadastrados
-	add_submenu_page( 'curriculo_vitae', 'Lista de currículos', 'Lista de currículos', 'manage_options', 'lista-de-curriculos', 'submenu_lista_curriculos' );
+	$optionCidade = "";
+	$optionCidade .= "<option value=\"\">Selecione a cidade</option>";
 	
-	#Submenu que exibe as áreas de serviços cadastrada e possibilita cadastrar novas áreas  
-	add_submenu_page( 'curriculo_vitae', 'Áreas de serviços', 'Áreas de serviços', 'manage_options', 'areas-de-servicos', 'submenu_areas' );
-
-}
-
-// Interior da página de Opções.
-// Esta função imprime o conteúdo da página no ecrã.
-// O HTML necessário encontra-se já escrito.
-function menu_curriculo_vitae() {
-	include_once( plugin_dir_path( __FILE__ ) . 'informativo.php' );
-}
-
-/*Função que carrega a página de novo cadastro no painel do admin*/
-function submenu_novo_cadastro() {
-	include_once( plugin_dir_path( __FILE__ ) . 'novoCadastro.php' );
-}
-
-/*Função que carrega a página da listagem de currículos cadastrado no painel do admin*/
-function submenu_lista_curriculos() {
-	include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculosAdmin.php' );
-}
-
-/*Função que carrega a página de áreas de serviços no painel do admin*/
-function submenu_areas() {
-	include_once( plugin_dir_path( __FILE__ ) . 'areasServicos.php' );
-}
-
-#Função que faz instalação do banco e cria a pasta
-function ewp_create_table() {
-  include_once( plugin_dir_path( __FILE__ ) . 'install.php' );
-}
-
-//Adiciona a funcao extra votos aos hooks ajax do WordPress.
-#add_action('wp_ajax_checkCpf', 'checkCpf');
-add_action('wp_ajax_nopriv_checkCpf', 'checkCpf');
-
-#funcão que troca o shortcode 'formCadastro' pelo formulário de cadastro
-function cadastrar() {
+	$sqlCidade = "SELECT cidade FROM ".$wpdb->prefix."wls_curriculo where estado = '".$estado."' group by cidade";
 	
+	$queryCidade = $wpdb->get_results( $sqlCidade );
+	
+	foreach($queryCidade as $kC => $vC){
+         $optionCidade .= "<option value=\"".$vC->cidade."\">".$vC->cidade."</option>";
+	}
+	
+	echo $optionCidade;
+	die();
+	
+}
+
+function wpcvf_carregar_bairro(){
+	
+	global $wpdb;
+	global $_POST;
+		
+	$estado = $_POST['estado'];
+	$cidade = $_POST['cidade'];
+	
+	$optionBairro = "";
+	$optionBairro .= "<option value=\"\">Selecione o bairro</option>";
+	
+	$sqlBairro = "SELECT bairro FROM ".$wpdb->prefix."wls_curriculo where estado = '".$estado."' and cidade = '".$cidade."' group by bairro";
+	$queryBairro = $wpdb->get_results( $sqlBairro );
+	foreach($queryBairro as $kB => $vB){
+         $optionBairro .= "<option value=\"".$vB->bairro."\">".$vB->bairro."</option>";
+	}
+	
+	echo $optionBairro;	
+	die();
+	
+}
+
+function wpcvf_verificarArquivo()
+{
+	global $wpdb;
+	global $_POST;
+		
+	$arquivo = $_POST['arquivo'];
+	
+	$array 	= explode("\\", $arquivo);
+	$ext 	= explode(".", $array[count($array)-1]);
+	
+	#print_r($array);
+	echo $ext[count($ext)-1];
+	
+}
+
+function wpcvf_editArea()
+{
+	global $wpdb;
+	global $_POST;
+		
+	$id 	= $_POST['rel'];
+	$texto 	= $_POST['texto'];
+			
+	$var = array(
+			  'area' 		=> $texto,	
+	);
+
+	// Guardar os valores na tabela
+	$qry = $wpdb->update( $wpdb->prefix."wls_areas", $var, array('id' => $id), $format = null, $where_format = null );
+	
+	if($qry == false && $qry != 0) { 
+		
+		$wpdb->show_errors(); 
+		
+		$wpdb->print_error();
+		
+		exit;
+		
+	}else{	
+		echo 1;
+		echo $id;
+		echo $texto;
+	}
+		
+}
+
+function wpcvf_fecharSessao() {
+    session_destroy ();
+}
+
+function wpcvf_unistall(){
+	include_once( plugin_dir_path( __FILE__ ) . 'uninstall.php' );
+}
+
+#funcão que faz o cadastro
+function wpcvf_cadastrar() {
 	ob_start();
-	
-	include_once( plugin_dir_path( __FILE__ ) . 'formCadastro.php' );
-	
+	  
+	include_once( plugin_dir_path( __FILE__ ) . 'formulario.php' );
+	  
 	$formCadastro = ob_get_contents();
 	ob_end_clean();
 	
 	return $formCadastro;
 }
 
-#Função que troca o shortcode 'listCadastro' pela lista de currículos cadastrado
-function listCurriculos() {
+function wpcvf_listCurriculos() {
 	
 	ob_start();
 	
-	include_once( plugin_dir_path( __FILE__ ) . 'listaCurriculos.php' );
+	include_once( plugin_dir_path( __FILE__ ) . 'lista_curriculos.php' );
 	
 	$listCurriculos = ob_get_contents();
 	
 	ob_end_clean();
 	
 	return $listCurriculos;
-}
-
-#shortcode que chama formulario de cadastro
-add_shortcode( 'formCadastro', 'cadastrar');
-	
-#shortcode para listar os currículos
-add_shortcode( 'listCurriculos', 'listCurriculos' );
-
-function estilos() {
-	include_once( plugin_dir_path( __FILE__ ) . 'style.php' );
 }
 
 ?>
