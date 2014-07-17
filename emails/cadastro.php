@@ -79,7 +79,7 @@ if(wp_mail($dadosCurriculo['email'], $subject, $msge,  $headers) ) {
 	
 	// the message was sent...
     echo '<div class="container-fluid">';
-    echo 'Currículo cadastrado com sucesso!';
+    echo 'Foi enviado uma mensagem para o seu e-mail.';
 	echo '</div>';
 	
 } else {

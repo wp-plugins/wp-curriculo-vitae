@@ -11,8 +11,6 @@ $assunto_cadastro 		= @$_POST['assunto_cadastro'];
 $mensagem_cadastro 		= @$_POST['mensagem_cadastro'];
 $assunto_aprovacao 		= @$_POST['assunto_aprovacao'];
 $mensagem_aprovacao 	= @$_POST['mensagem_aprovacao'];
-$assunto_esqueceu 		= @$_POST['assunto_esqueceu'];
-$mensagem_esqueceu 		= @$_POST['mensagem_esqueceu'];
 
 
 $tipo_envio				= @$_POST['tipo_envio']; 
@@ -31,12 +29,10 @@ $host 					= @$_POST['host'];
 // Registar os IPs na base de dados
 $var = array(
   
-  #'assunto_cadastro'		=> $assunto_cadastro,	
-  #'mensagem_cadastro'		=> $mensagem_cadastro,	
-  #'assunto_aprovacao'		=> $assunto_aprovacao,	
-  #'mensagem_aprovacao'		=> $mensagem_aprovacao,	
-  'assunto_esqueceu'		=> $assunto_esqueceu,	
-  'mensagem_esqueceu'		=> $mensagem_esqueceu,	
+  'assunto_cadastro'		=> $assunto_cadastro,	
+  'mensagem_cadastro'		=> $mensagem_cadastro,	
+  'assunto_aprovacao'		=> $assunto_aprovacao,	
+  'mensagem_aprovacao'		=> $mensagem_aprovacao,	
   
   #'tipo_envio' 				=> $tipo_envio,
   'nome' 					=> $nome,
@@ -78,7 +74,7 @@ if($qry == false && $qry != 0) {
 	
 } else { 
 	
-	@header("Location:?page=curriculo_vitae_cv_premium&msg=".$msg."");	
+	@header("Location:?page=configuracao-emails&msg=".$msg."");	
 
 }
 

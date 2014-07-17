@@ -172,25 +172,6 @@ foreach($queryF as $kF => $vF){
     <div class="row">
     	<div class="col-md-6">
         	<div class="form-group">
-              <label class="control-label">Login:</label>
-              <div class="controls">
-                <input type="text" name="login" value="<?php echo @$dadosF['login']?>" class="form-control"> 
-              </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-        	<div class="form-group">
-              <label class="control-label">Senha:</label>
-              <div class="controls">
-                <input type="password" name="senha" value="" class="form-control"> 
-              </div>
-            </div>
-        </div>
-    </div>
-	
-    <div class="row">
-    	<div class="col-md-6">
-        	<div class="form-group">
               <label class="control-label">CPF:</label>
               <div class="controls">
               

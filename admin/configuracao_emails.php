@@ -31,7 +31,6 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
     <p>Para usar as informações do cadastrado no e-mail usar os comandos abaixo:</p>
     <div class="rows">
     	<div class="col-md-6">
-        	<strong>@senha</strong><br />
             <strong>@nome</strong><br />
             <strong>@email</strong><br />
             <strong>@cpf</strong><br />
@@ -80,24 +79,7 @@ if($_POST['salvar']){
             <textarea name="mensagem_cadastro" id="mensagem_cadastro" class="form-control" ><?php echo $dadosOp['mensagem_cadastro'];?></textarea> 
           </div>
         </div>
-    
-    	<h3>Configura&ccedil;&otilde;es de e-mail esqueceu a senha</h3>
-
-        
-        <div class="form-group">
-          <label class="control-label cep">Assunto:</label>
-          <div class="controls">
-            <input type="text" name="assunto_esqueceu" id="assunto_esqueceu" value="<?php echo $dadosOp['assunto_esqueceu'];?>" class="form-control" /> 
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="control-label cep">Mensagem:</label>
-          <div class="controls">
-            <textarea name="mensagem_esqueceu" id="mensagem_esqueceu" class="form-control" ><?php echo $dadosOp['mensagem_esqueceu'];?></textarea> 
-          </div>
-        </div>
-		
+    		
         <h3>Personalizar configura&ccedil;&otilde;es de remetente</h3>
         
         <div class="rows">

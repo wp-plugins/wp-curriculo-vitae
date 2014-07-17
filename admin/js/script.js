@@ -65,9 +65,53 @@
 			$("#cpf").mask("999.999.999-99");
 			$("#cep").mask("99999-999");
 			$("#telefone").mask("(99)9999-9999");
-			$("#celular").mask("(99)99999-9999");
 			$("#idade").mask("99/99/9999");
 		}
+		
+		
+		function str_replace(busca,subs,valor){
+            var ret=valor;
+            var pos=ret.indexOf(busca);
+            while(pos!=-1){
+                ret=ret.substring(0,pos)+subs+ret.substring(pos+busca.length,ret.length);
+                pos=ret.indexOf(busca);
+            }
+            return ret;
+        }
+		function mascara(valor,masc){
+		var res=valor,mas=str_replace("?","",str_replace("9","",masc));
+		for(var i=0;i<mas.length;i++){
+			res=str_replace(mas.charAt(i),"",res);
+			mas=str_replace(mas.charAt(i),"",mas);
+		}
+		var ret="";
+		for(var i=0;i<masc.length&&res!="";i++){
+			switch(masc.charAt(i)){
+				case"?":
+					ret+=res.charAt(0);
+					res=res.substring(1,res.length);
+					break;
+				case"9":
+					while(res!=""&&(res.charCodeAt(0)>57||res.charCodeAt(0)<48))res=res.substring(1,res.length);
+					if(res!=""){
+						ret+=res.charAt(0);
+						res=res.substring(1,res.length);
+					}
+					break;
+				default:
+					ret+=masc.charAt(i);
+				}
+			}
+			return ret;
+		}
+
+		$("#celular").keyup(function(){
+			if($(this).val().length <= 13)
+				$(this).val( mascara($(this).val(), '(99)9999-9999') );
+			else
+				$(this).val( mascara($(this).val(), '(99)99999-9999') );
+		})
+		
 	});
 	
 	//Função que checa se já existe um cadastro com o mesmo CPF

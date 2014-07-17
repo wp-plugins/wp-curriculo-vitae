@@ -6,7 +6,6 @@
 	 
 global $wpdb;
 
-
 include_once( plugin_dir_path( __FILE__ ) . 'funcoes.php' );	
 
 $wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
@@ -37,8 +36,6 @@ $idade 			= $_POST["idade"];
 $sexo 			= $_POST["sexo"];
 $remuneracao	= $_POST["remuneracao"];
 $cpf 			= $_POST["cpf"];
-$login 			= $_POST["login"];
-$senha 			= $_POST["senha"];
 $cep 			= $_POST["cep"];
 $rua 			= $_POST["rua"];
 $numero 		= $_POST["numero"];
@@ -63,18 +60,6 @@ $descricao 	= $_POST["descricao"];
 	$wpdb->insert($wpdb->prefix."wls_areas", $var2 );
 	
 	$id_area = $wpdb->insert_id;
-}
-
-$senha = md5($senha);
-
-#echo "senha banco: ".$dadosV->senha;
-#echo "<br/>";
-#echo "senha novo: ".$senha;
-
-if($senha == "" || $senha == "d41d8cd98f00b204e9800998ecf8427e"){
-  	$senha = $dadosV->senha;
-}else{
-  	$senha = md5($_POST['senha']);
 }
 
 #echo "<br/>";
@@ -140,9 +125,6 @@ if($_FILES['curriculo']['name']){
 	'sexo' 			=> $sexo,
 	'remuneracao' 	=> $remuneracao,
 	
-	'login' 		=> $login,
-	'senha' 		=> $senha,
-	
 	'cpf' 			=> $cpf,
 	'cep' 			=> $cep,
 	'rua' 			=> $rua,
@@ -153,10 +135,6 @@ if($_FILES['curriculo']['name']){
 	'descricao' 	=> $descricao,
 	'curriculo' 	=> $curriculo,
   );
-  
-  if($senha != ""){
-	  $var['senha'] = $senha;
-  }
   
   $proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
   

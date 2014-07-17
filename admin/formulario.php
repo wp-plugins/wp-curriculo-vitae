@@ -221,24 +221,7 @@ wp_enqueue_script('wpcva_scriptckeditor', plugins_url('js/scriptckeditor.js', __
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="control-label">Login:</label>
-                  <div class="controls">
-                    <input type="text" class="form-control" name="login" value="<?php echo @$dado['login'];?>" />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="control-label">Senha:</label>
-                  <div class="controls">
-                    <input type="password" class="form-control" name="senha">
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             <div class="row">
               <div class="col-md-2">
                 <div class="form-group">

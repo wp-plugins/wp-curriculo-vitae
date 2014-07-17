@@ -81,7 +81,7 @@ if(wp_mail($dadosOp['email'], $subject, $msge,  $headers) ) {
 	
 	// the message was sent...
     echo '<div class="container-fluid">';
-    echo 'Currículo cadastrado com sucesso!';
+    echo 'Foi enviado uma mensagem para o administrador do site.';
 	echo '</div>';
 	
 } else {
