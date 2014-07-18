@@ -20,9 +20,6 @@ wp_enqueue_style('wpcva_bootstrap', plugins_url('../css/bootstrap.min.css', __FI
 
 wp_enqueue_script('jquery');	
 wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __FILE__));
-wp_enqueue_script('wpcva_ckeditor', plugins_url('../classes/ckeditor/ckeditor.js', __FILE__));
-wp_enqueue_script('wpcva_adapters', plugins_url('../classes/ckeditor/adapters/jquery.js', __FILE__));
-wp_enqueue_script('wpcva_scriptCkeditor', plugins_url('js/scriptckeditor.js', __FILE__));
 wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
 
 ?>
@@ -76,7 +73,10 @@ if($_POST['salvar']){
         <div class="form-group">
           <label class="control-label cep">Mensagem:</label>
           <div class="controls">
-            <textarea name="mensagem_cadastro" id="mensagem_cadastro" class="form-control" ><?php echo $dadosOp['mensagem_cadastro'];?></textarea> 
+            
+            <?php /*<textarea name="mensagem_cadastro" id="mensagem_cadastro" class="form-control" ><?php echo $dadosOp['mensagem_cadastro'];?></textarea> */ ?>
+            
+            <?php wp_editor( $dadosOp['mensagem_cadastro'], 'wpa_mensagem_cadastro', $settings = array('textarea_name' => mensagem_cadastro) ); ?>
           </div>
         </div>
     		

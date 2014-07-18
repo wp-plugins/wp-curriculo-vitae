@@ -30,10 +30,6 @@ wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __F
 wp_enqueue_script('wpcva_scriptMask', plugins_url('../js/jquery.maskedinput-1.1.4.pack.js', __FILE__));
 wp_enqueue_script('wpcva_scriptAreaJS', plugins_url('../js/scriptArea.js', __FILE__));
 wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
-wp_enqueue_script('wpcva_ckeditor', plugins_url('../classes/ckeditor/ckeditor.js', __FILE__));
-wp_enqueue_script('wpcva_adapters', plugins_url('../classes/ckeditor/adapters/jquery.js', __FILE__));
-
-wp_enqueue_script('wpcva_scriptckeditor', plugins_url('js/scriptckeditor.js', __FILE__));
 ?>
 
 <div class="container-fluid">
@@ -279,7 +275,8 @@ wp_enqueue_script('wpcva_scriptckeditor', plugins_url('js/scriptckeditor.js', __
                 <div class="form-group">
                   <label class="control-label">Descri&ccedil;&atilde;o:</label>
                   <div class="controls">
-                    <textarea class="form-control input-block-level" name="descricao" id="descricao"><?php echo @$dado['descricao'];?></textarea>
+                    <?php /*<textarea class="form-control input-block-level" name="descricao" id="descricao"><?php echo @$dado['descricao'];?></textarea>*/ ?>
+                    <?php wp_editor( @$dado['descricao'], 'descricao', $settings = array('textarea_name' => descricao) ); ?>
                   </div>
                 </div>
               </div>

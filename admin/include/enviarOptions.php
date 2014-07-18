@@ -9,8 +9,6 @@ $wls_curriculo_options 	= $wpdb->prefix . 'wls_curriculo_options';
  
 $assunto_cadastro 		= @$_POST['assunto_cadastro'];
 $mensagem_cadastro 		= @$_POST['mensagem_cadastro'];
-$assunto_aprovacao 		= @$_POST['assunto_aprovacao'];
-$mensagem_aprovacao 	= @$_POST['mensagem_aprovacao'];
 
 
 $tipo_envio				= @$_POST['tipo_envio']; 
@@ -31,8 +29,6 @@ $var = array(
   
   'assunto_cadastro'		=> $assunto_cadastro,	
   'mensagem_cadastro'		=> $mensagem_cadastro,	
-  'assunto_aprovacao'		=> $assunto_aprovacao,	
-  'mensagem_aprovacao'		=> $mensagem_aprovacao,	
   
   #'tipo_envio' 				=> $tipo_envio,
   'nome' 					=> $nome,
