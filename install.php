@@ -97,7 +97,7 @@ $wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 	
 	if($dadosOp['id']!=1){
 		$assunto_cadastro 	= "Seu currículo foi cadastrado com sucesso!";
-		$mensagem_cadastro 	= "Seu Currículo foi cadastrado com sucesso,<br/>\n e assim que com pagamento for aprovado você receberá os dados de login de acesso.";
+		$mensagem_cadastro 	= "Seu Currículo foi cadastrado com sucesso!<br/>\n";
 		
 		$assunto_aprovado	= "Seu currículo foi aprovado!";
 		$mensagem_aprovado	= "Seu currículo foi aprovado";

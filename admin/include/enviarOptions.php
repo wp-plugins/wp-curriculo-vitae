@@ -10,16 +10,8 @@ $wls_curriculo_options 	= $wpdb->prefix . 'wls_curriculo_options';
 $assunto_cadastro 		= @$_POST['assunto_cadastro'];
 $mensagem_cadastro 		= @$_POST['mensagem_cadastro'];
 
-
-$tipo_envio				= @$_POST['tipo_envio']; 
 $nome					= @$_POST['nome']; 
 $email					= @$_POST['email']; 
-$usuario 				= @$_POST['usuario'];
-$senha 					= @$_POST['senha'];
-$smtp_autententicacao 	= @$_POST['smtp_autententicacao'];
-$seguranca 				= @$_POST['seguranca'];
-$porta_saida 			= @$_POST['porta_saida'];
-$host 					= @$_POST['host'];
 
 #exit;
 // Checamos se não existe nenhum registo procedemos
@@ -58,7 +50,7 @@ $id = 1;
 
 echo $qry = $wpdb->update($wls_curriculo_options, $var, array('id' => $id), $format = null, $where_format = null );
 
-$msg = 1;
+$msg = "?msg=1";
 
 if($qry == false && $qry != 0) { 
 	
@@ -69,6 +61,7 @@ if($qry == false && $qry != 0) {
 	exit;
 	
 } else { 
+
 	
 	@header("Location:?page=configuracao-emails&msg=".$msg."");	
 

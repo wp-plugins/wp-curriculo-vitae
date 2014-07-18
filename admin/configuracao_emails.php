@@ -46,7 +46,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
 
         </div>
     </div>
-    
+    <div style="clear:both; height:20px;"></div>
 
 <?php 
 if($_POST['salvar']){ 
@@ -103,7 +103,7 @@ if($_POST['salvar']){
             </div>
             
         </div>
-        
+        <div style="clear:both; height:20px;"></div>
         <button type="submit" name="salvar" id="cadastrar" class="btn btn-primary">Salvar</button>
         
     </form>
