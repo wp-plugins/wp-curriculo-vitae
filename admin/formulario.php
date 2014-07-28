@@ -44,7 +44,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
         <div style="clear:both;"></div>
     	<div class="alert alert-success" style="text-align:center;">Currículo Atualizado com sucesso!</div>	
 
-  <?php }elseif($msg==1){ ?>
+  <?php }elseif(@$_GET['msg']==1){ ?>
   	
     	<div style="clear:both;"></div>
       	<div class="alert alert-success" style="text-align:center;">Currículo cadastrado com sucesso!</div>	

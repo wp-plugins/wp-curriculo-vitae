@@ -9,9 +9,12 @@ include_once( plugin_dir_path( __FILE__ ) . 'include/funcoes.php' );
 
 ########### Função para excluir registro
 
-if(isset($_GET['delete'])){
-	delete($_GET['id_registro'], $wls_areas );
+if(isset($_POST['excl'])){
+	foreach($_POST['excl'] as $regExcl){
+		delete($regExcl, $wls_areas );
+	}
 }
+
 
 $cadastrar 		= @$_POST["cadastrar"];
 $cadastrar_x 	= @$_POST["cadastrar_x"];
@@ -77,6 +80,7 @@ wp_enqueue_style('wpcva_style', plugins_url('css/style.css', __FILE__));
 
 wp_enqueue_script('jquery');	
 wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __FILE__));
+wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
 
 if(isset($_GET['msg'])){
 	$msg = @$_GET['msg'];
@@ -122,20 +126,26 @@ if(isset($_GET['msg'])){
 		$quantreg = $wpdb->num_rows; // Quantidade de registros pra paginação
 		if($queryRow){
 	?>
-    		<?php if($msg==1){?>
+    		<?php if(@$_GET['msg']==1){?>
     			<div class="alert alert-success" style="text-align:center;">Área de serviço cadastrado com sucesso!</div>
-            <?php }elseif($msg==2){?>
+            <?php }elseif(@$_GET['msg']==2){?>
             	<div class="alert alert-danger" style="text-align:center;">Essa área já existe.</div>
-            <?php }elseif($msg==3){ ?>
+            <?php }elseif(@$_GET['msg']==3){ ?>
             	<div class="alert alert-success" style="text-align:center;">Área deletado com sucesso!</div>
             <?php }?>
+            
+            <div  style="float:right; margin:30px 15px 15px 0;">
+              <img src="<?php echo plugins_url('../img/cross.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
+              <a href="javascript:registros.submit();">Excluir registro</a>
+            </div>
+            
             <p>Para editar a área de serviço clique no nome que deseja alterar.</p>
     		<form action="" method="post">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                   <thead>
                     <tr>
                       <th>Áreas cadastradas</th>
-                      <th width="5%" align="center">Excluir</th>
+                      <th width="30" style="text-align:center;"><input type="checkbox" id="checkAll" /></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -149,10 +159,7 @@ if(isset($_GET['msg'])){
                     <tr>
                       <td><div id="response"></div><span class="areaEdit" rel="<?php echo $v->id ?>" ><?php echo @$v->area ?></span></td>
                       <td style="text-align:center;">
-
-                        <a href="admin.php?page=areas-de-servicos&id_registro=<?php echo $v->id ?>&delete=1">
-                            <img src="<?php echo plugins_url('../img/cross.png',__FILE__)?>" width="16" height="16" style="padding:0; margin-top:3px;" />
-                        </a>
+						<input type="checkbox" name="excl[]" value="<?php echo $v->id ?>" class="check" />
                       </td>
                     </tr>
                     

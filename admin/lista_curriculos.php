@@ -24,8 +24,11 @@ if($buscar){
 
 ########### Função para excluir registro
 
-if(isset($_GET['delete'])){
-	delete($_GET['id_registro'], $wls_curriculo );
+
+if(isset($_POST['excl'])){
+	foreach($_POST['excl'] as $regExcl){
+		delete($regExcl, $wls_curriculo );
+	}	
 }
 
 //######### INICIO Paginação
@@ -79,24 +82,27 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
       
       <a class="bt_novo" href="?page=formulario-admin">Novo cadastro</a>
       
+      <div style="clear:both;"></div>
+      
 	  <?php if(@$_GET['msg']==2){ ?>
 
-          <div style="clear:both;"></div>
-          <div class="alert alert-success" style="text-align:center;">Currículo Atualizado com sucesso!</div>	
+          <div class="alert alert-success" style="text-align:center;">Atualizado com sucesso!</div>	
   
-	  <?php }elseif($msg==3){ ?>
+	  <?php }elseif(@$_GET['msg']==3){ ?>
 
-          <div style="clear:both;"></div>      
           <div class="alert alert-success" style="text-align:center;">Registro deletado com sucesso!</div>	
           
       <?php }?>
       
+      <div  style="float:right; margin:30px 15px 15px 0;">
+      	<img src="<?php echo plugins_url('../img/wp-cv-delete.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
+        <a href="javascript:registros.submit();">Excluir registro</a>
+      </div>
 
       <div  style="float:right; margin:30px 15px 15px 0;">
       	<img src="<?php echo plugins_url('../img/page_excel.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
         <a href="<?php echo plugins_url('include/exportar.php', __FILE__)?>" target="_blank">Exportar cadastros.</a>
       </div>
-
       
       <table class="table table-striped table-bordered">
         <thead>
@@ -107,11 +113,11 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
             <th width="60">E-mail</th>
             <th width="50">Arquivo</th>
             <th width="30">Editar</th>
-            <th width="30">Excluir</th>
+            <th width="30" style="text-align:center;"><input type="checkbox" id="checkAll" /></th>
           </tr>
         </thead>
         <tbody>
-        
+        <form action="?page=lista-de-curriculos-admin" name="registros" id="registros" method="post">
         <?php 
         	$x=0;
           	foreach($query as $k => $v){
@@ -186,22 +192,14 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                     
                 </td>
                 
-                <td style="text-align:center;">
-                   <?php /* <form action="#" method="post" style="margin:0px;">
-                        <input type="hidden" name="id_registro" value="<?php echo $v->id ?>" />
-                        <input type="hidden" name="nome_registro" value="<?php echo $v->nome ?>" />
-                        <input type="image" name="delete" src="<?php echo plugins_url('../img/wp-cv-delete.png',__FILE__)?>" width="16" height="16" style="padding:0; margin-top:3px;" />
-                    </form>*/ ?>
-                    
-                    <a href="admin.php?page=lista-de-curriculos-admin&id_registro=<?php echo $v->id ?>&delete=1">
-                    	<img src="<?php echo plugins_url('../img/wp-cv-delete.png',__FILE__)?>" width="16" height="16" style="padding:0; margin-top:3px;" />
-                    </a>
+                <td style="text-align:center;">                    
+                    <input type="checkbox" name="excl[]" value="<?php echo $v->id ?>" class="check" />
                 </td>
                 
               </tr>
               
         <?php $x++; }  ?>
-          
+        </form>  
         </tbody>
       </table>
       

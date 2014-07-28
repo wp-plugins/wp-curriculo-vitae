@@ -12,6 +12,17 @@
 	}
 	
 	$(document).ready(function () {
+		
+		$('#checkAll').click(function(){
+			if($('#checkAll').is(':checked')){
+				//alert(1);
+				$('.check').attr('checked', true);
+			}else{
+				$('.check').attr('checked', false);
+				//alert(2);
+			}
+		});
+		
 		function slideout() {
 		 	setTimeout(function () {
 		 		$("#response").slideUp("slow", function () {});
