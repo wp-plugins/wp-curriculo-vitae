@@ -37,3 +37,5 @@ a, img{ border:none !important; box-shadow:none !important;  }
 .wp-curriculo-copywrite a{ text-decoration:none; color:#09F; }
 
 .wpcvf_lightbox_content { width:700px !important; display: none; position: absolute !important; top: 10%; left: 50%; width: 50%; padding: 8px; background-color: white; z-index:1002; overflow: auto; box-shadow:#000 -2px 2px 15px 1px; margin-left:-350px !important; }/*#########################################################################################################################*/
+
+.controls input[type='text']{ padding:0px; }
