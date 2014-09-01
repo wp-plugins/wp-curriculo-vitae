@@ -1,7 +1,7 @@
 ﻿=== WP-Curriculo Vitae Free===
 Contributors: Williamluis
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
-Requires at least: 4.5.5
+Requires at least: 4.5.6
 Tested up to: 3.9.1
 Stable tag: 4.5.5
 License: GPLv2
