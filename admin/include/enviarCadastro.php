@@ -42,6 +42,7 @@ $numero 		= $_POST["numero"];
 $bairro 		= $_POST["bairro"];
 $cidade 		= str_replace("'","", str_replace("\'", "", $_POST["cidade"]));
 $estado 		= $_POST["estado"];
+$curriculoCar	= $_POST['curriculoCar'];
 
 $descricao 	= $_POST["descricao"];
 
@@ -98,6 +99,15 @@ if($_FILES['curriculo']['name']){
 	
 	
 	
+}elseif($_FILES['curriculo']['name'] == "" && $curriculoCar != ""){
+	
+	$tipoArquivo = explode(".", @$curriculoCar);
+	$nomeNovo = $nome2.".".@$tipoArquivo[1];
+	
+	rename(@$uploaddir.@$curriculoCar, @$uploaddir.@$nomeNovo);
+	//exit;
+	$curriculo = $nomeNovo;
+
 }else{
 	$curriculo = "";
 }

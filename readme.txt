@@ -2,8 +2,8 @@
 Contributors: Williamluis
 Tags: curriculo, curriculos, cadastros de curriculo, lista de curriculos,cadastro de usuarios, curriculum, cadastre curriculum, list of curriculum, list of resume, cadastre resume
 Requires at least: 4.5.6
-Tested up to: 3.9.2
-Stable tag: 4.5.6
+Tested up to: 4.0
+Stable tag: 4.5.7
 License: GPLv2
 
 O WP-Curriculo Vitae e um plugin que permite que usúarios a cadastrem seu currículo no site para divulgação online ou para uso do site.
@@ -100,6 +100,11 @@ Atualizacao do layout do painel e formulario de cadastro.
 = 4.5.5 =
 
 1. Ajuste no menu configuracoes de e-mails;
+
+= 4.5.7 =
+
+1. Ajuste no upload do currículo;
+2. otimização no wp-currículo-vitae-free
 
 
 == Screenshots ==

@@ -252,7 +252,8 @@ foreach($queryF as $kF => $vF){
       </div>
     </div>
     
-	<?php if($_SESSION['curriculo']){ ?>
+	<?php if($dadosF['curriculo']){ ?>
+      <input type="hidden" name="curriculoCar" value="<?php echo @$dadoF['curriculo'];?>" />
     	<div class="form-group">
         	<label class="control-label">Arquivo já salvo:</label>	
             <div class="well">

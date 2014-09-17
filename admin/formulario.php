@@ -283,7 +283,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
         	  
               <div style="clear:both;"></div>
               <?php if($dado['curriculo']){ ?>
-              	
+              	  <input type="hidden" name="curriculoCar" value="<?php echo @$dado['curriculo'];?>" />
                   <div class="container-fluid">
                   	  <label class="control-label">Arquivo já salvo:</label>	
                       <div class="well">
