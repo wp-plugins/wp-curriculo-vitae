@@ -97,12 +97,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
       <div  style="float:right; margin:30px 15px 15px 0;">
       	<img src="<?php echo plugins_url('../img/wp-cv-delete.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
         <a href="javascript:registros.submit();">Excluir registro</a>
-      </div>
-
-      <div  style="float:right; margin:30px 15px 15px 0;">
-      	<img src="<?php echo plugins_url('../img/page_excel.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
-        <a href="<?php echo plugins_url('include/exportar.php', __FILE__)?>" target="_blank">Exportar cadastros.</a>
-      </div>
+      </div>      
       
       <table class="table table-striped table-bordered">
         <thead>
