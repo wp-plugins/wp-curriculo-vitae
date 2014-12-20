@@ -10,19 +10,37 @@ wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __F
     <h2>Informações do plugin</h2>					
     <p>O <strong>WP-Curriculo Vitae</strong> e um plugin que permite que usuários a cadastrem seu currículo no site para divulgação online ou para uso do site.</p>
     <p>O plugin trabalha com duas versoes:</p>
-    <p><strong>Versão gratuita:</strong></p>
-    <p>1. Cadastrar o curriculo com válidação de CPF;<br/>
-    2. Listagem de curriculos com sistema de busca;<br/>
-    3. Cadastrar e editar atraves de area restrita.</p>
-    <p>Para acessar a versão gratuita&nbsp;<a title="Plugin WP - Currículo Vitae" href="http://wordpress.org/extend/plugins/wp-curriculo-vitae/" target="_blank">clique aqui</a>.</p>
-    <p><strong>Versão paga:</strong></p>
-    <p>1. Cadastrar e editar o curriculo para o usuario final;<br/>
-    2. Cadastrar e editar atraves de area restrita;<br/>
-    3. Widget de login na area restritra;<br/>
-    4. Listagem de curriculos com sistema de busca por: Nome, especificacoes, area de trabalho e local;<br/>
-    5. Widget de Busca de Curriculos.<br/>
-    <?php /*?>6. Exporta em XML.<br/><? */?>
-    6. Cadastros com Válidação de CPF e campos de endereço.</p>
+
+    <p><b>Versao gratuita:</b></p>
+    
+    <ul style=" list-style: list-style: decimal;">
+        <li>Cadastrar o currículo;</li>
+        <li>Listagem de currículos com sistema de busca;</li>
+        <li>Listagem de de área de serviços;</li>
+        <li>Editar através de área restrita;</li>
+        <li>Shortcode para formulário de cadastro <b>[formCadastro]</b>;</li>
+        <li>Shortcode para lista de currículos <b>[listCurriculos]</b>;</li>
+    </ul>
+
+    <p><b>Versao paga:</b></p>
+     
+    <ul style=" list-style: list-style: decimal;">
+        <li>Cadastrar o currículo;</li>
+        <li>Editar através de área restrita;</li>
+        <li>Widget de login na área restrita;</li>
+        <li>Listagem de currículos com sistema de busca;</li>
+        <li>Área restrita pode salvar os currículo em PDF;</li>
+        <li>Relatório de todos currículo em PDF;</li>
+        <li>Lista de currículo área admin com filtro de pesquisa;</li>
+        <li>Widget de busca de currículos;</li>
+        <li>Widget de login para cadastrado, com permissão de edição e exclusão do mesmo;</li>
+        <li>Sistema de aprovação de cadastrados;</li>
+        <li>Exportação de cadastrados;</li>
+        <li>Shortcode para formulário de cadastro <b>[formCadastro_cvp]</b>;</li>
+        <li>Shortcode para lista de currículos <b>[listCurriculos_cvp]</b>;</li>
+    </ul> 
+    
+    <p><a href="http://williamluis.com.br/loja/" target="_blank">Link para para plugin pago</a></p>
     
     <p><strong>Como utilizar</strong></p>
     <p>Para exibir o formulário de cadastro, crie uma pagina e coloque o shortcode <strong>[formCadastro]</strong>.</p>

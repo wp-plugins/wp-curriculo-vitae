@@ -17,7 +17,11 @@ O plugin trabalha com duas versoes:
 **Versao gratuita:**
  
 1. Cadastrar o curriculo;
-2. Listagem de curriculos com sistema de busca.
+2. Listagem de curriculos com sistema de busca;
+3. Listagem de de área de serviços;
+4. Editar através de área restrita
+5. Shortcode para formulário de cadastro **[formCadastro]**;
+6. Shortcode para lista de currículos **[listCurriculos]**;
  
 **Versao paga:**
  
@@ -32,8 +36,8 @@ O plugin trabalha com duas versoes:
 9. Widget de login para cadastrado, com permissão de edição e exclusão do mesmo;
 10. Sistema de aprovação de cadastrados;
 11. Exportação de cadastrados;
-12. Shortcode para formulário de cadastro [*formCadastro_cvp];
-13. Shortcode para lista de currículos [*listCurriculos_cvp];
+12. Shortcode para formulário de cadastro **[formCadastro_cvp]**;
+13. Shortcode para lista de currículos **[listCurriculos_cvp]**;
  
 [Link para para plugin pago](http://williamluis.com.br/loja/)
 
