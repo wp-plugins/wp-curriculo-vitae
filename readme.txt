@@ -21,13 +21,22 @@ O plugin trabalha com duas versoes:
  
 **Versao paga:**
  
-1. Cadastrar o curriculo;
-2. Editar atraves de area restrita;
-3. Widget de login na area restritra;
-4. Listagem de curriculos com sistema de busca;
-5. Widget de Busca de Curriculos.
+1. Cadastrar o currículo;
+2. Editar através de área restrita;
+3. Widget de login na área restrita;
+4. Listagem de currículos com sistema de busca;
+5. Área restrita pode salvar os currículo em PDF;
+6. Relatório de todos currículo em PDF;
+7. Lista de currículo área admin com filtro de pesquisa;
+8. Widget de busca de currículos;
+9. Widget de login para cadastrado, com permissão de edição e exclusão do mesmo;
+10. Sistema de aprovação de cadastrados;
+11. Exportação de cadastrados;
+12. Shortcode para formulário de cadastro [*formCadastro_cvp];
+13. Shortcode para lista de currículos [*listCurriculos_cvp];
  
-[Link para para plugin pago](http://wiliamluis.wordpress.com/plugin/)
+[Link para para plugin pago](http://williamluis.com.br/loja/)
+
  
 **Como utilizar**
  
