@@ -2,8 +2,6 @@
 
 global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
-include_once( plugin_dir_path( __FILE__ ) . 'include/funcoes.php' );	
-
 ########### Função para excluir registro
 
 if(isset($_POST['excl'])){
