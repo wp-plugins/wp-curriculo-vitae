@@ -13,7 +13,7 @@ wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __F
 
     <p><b>Versao gratuita:</b></p>
     
-    <ul style=" list-style: list-style: decimal;">
+    <ul style=" list-style: decimal; margin-left: 25px;">
         <li>Cadastrar o currículo;</li>
         <li>Listagem de currículos com sistema de busca;</li>
         <li>Listagem de de área de serviços;</li>
@@ -24,7 +24,7 @@ wp_enqueue_script('wpcva_bootstrapJS', plugins_url('../js/bootstrap.min.js', __F
 
     <p><b>Versao paga:</b></p>
      
-    <ul style=" list-style: list-style: decimal;">
+    <ul style=" list-style: decimal; margin-left: 25px;">
         <li>Cadastrar o currículo;</li>
         <li>Editar através de área restrita;</li>
         <li>Widget de login na área restrita;</li>

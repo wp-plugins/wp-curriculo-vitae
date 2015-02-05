@@ -4,16 +4,11 @@
 	// Desta forma, se um usuário permanecer no site por 30 minutos,
 	// será registado três vezes na tabela.
 	 
-global $wpdb;
-
-include_once( plugin_dir_path( __FILE__ ) . 'funcoes.php' );	
-
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 $sqlV = "SELECT a.*
 		   
-		   FROM ".$wpdb->prefix."wls_curriculo a
+		   FROM ".$wls_curriculo." a
 		   
 		   		where a.id = '".$_POST["id_cadastro"]."'";
 			
@@ -23,30 +18,16 @@ foreach($queryV as $kV => $vV){
 	$dadosV = $vV;
 }
 
-$id_area 		= $_POST["id_area"];
-$excluirConta	= $_POST["excluirConta"];
-$nome 			= $_POST["nome"];
-$telefone 		= $_POST["telefone"];
-$celular 		= $_POST["celular"];
-$email 			= $_POST["email"];
-$site_blog 		= $_POST["site_blog"];
-$skype 			= $_POST["skype"];
-$estado_civil	= $_POST["estado_civil"];
-$idade 			= $_POST["idade"];
-$sexo 			= $_POST["sexo"];
-$remuneracao	= $_POST["remuneracao"];
-$cpf 			= $_POST["cpf"];
-$cep 			= $_POST["cep"];
-$rua 			= $_POST["rua"];
-$numero 		= $_POST["numero"];
-$bairro 		= $_POST["bairro"];
-$cidade 		= str_replace("'","", str_replace("\'", "", $_POST["cidade"]));
-$estado 		= $_POST["estado"];
-$curriculoCar	= $_POST['curriculoCar'];
+foreach ($_POST as $key=>$value){
+	${$key} = $value;
+}
 
-$descricao 	= $_POST["descricao"];
+/*echo "nome: ". $nome. "</br>";
+echo "email: ". $email. "</br>";
 
- if($_POST["area"]){
+exit;*/
+
+if($_POST["area"]){
 	
 	$area 		= $_POST["area"];
 
@@ -58,7 +39,7 @@ $descricao 	= $_POST["descricao"];
 	  'area' 		=> $area,
 	);
 	
-	$wpdb->insert($wpdb->prefix."wls_areas", $var2 );
+	$wpdb->insert($wls_areas, $var2 );
 	
 	$id_area = $wpdb->insert_id;
 }
@@ -70,10 +51,8 @@ $descricao 	= $_POST["descricao"];
 // A Hora a que o usuário acessou
 $current_time = current_time( 'mysql' );
 
-
 if($_FILES['curriculo']['name']){
 			  
-
 	$uploaddir = dirname(__FILE__)."/../../../../../wp-content/uploads/curriculos/";
 	
 	$tipoArquivo 	= explode(".", $_FILES['curriculo']['name']);
@@ -96,9 +75,7 @@ if($_FILES['curriculo']['name']){
 	#echo $uploaddir. $curriculo;
 	#exit;
 	move_uploaded_file($_FILES['curriculo']['tmp_name'], $uploaddir. $curriculo);
-	
-	
-	
+		
 }elseif($_FILES['curriculo']['name'] == "" && $curriculoCar != ""){
 	
 	$tipoArquivo = explode(".", @$curriculoCar);
@@ -158,7 +135,7 @@ if($_FILES['curriculo']['name']){
 	  
   }
   
-  	  $path = removeMsg($location);
+  	  $path = $wpcvf->removeMsg($location);
   
   if(@$_POST['mod']=="new"){
 	  

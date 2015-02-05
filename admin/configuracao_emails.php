@@ -1,8 +1,6 @@
 <?php
 
-global $wpdb;
-
-$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 
 if(isset($_POST['salvar'])){
@@ -27,7 +25,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
     <h2>Configurações de e-mails</h2>
     <p>Para usar as informações do cadastrado no e-mail usar os comandos abaixo:</p>
     <div class="rows">
-    	<div class="col-md-6">
+    	<div class="col-md-5">
             <strong>@nome</strong><br />
             <strong>@email</strong><br />
             <strong>@cpf</strong><br />
@@ -35,7 +33,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
             <strong>@rua</strong><br />
             <strong>@bairro</strong><br />
 		</div>
-        <div class="col-md-6">
+        <div class="col-md-5">
         	<strong>@cidade</strong><br />
             <strong>@estado</strong><br />
             <strong>@numero</strong><br />
@@ -84,7 +82,7 @@ if($_POST['salvar']){
         
         <div class="rows">
         	
-            <div class="col-md-6">
+            <div class="col-md-5">
             	<div class="form-group">
                   <label class="control-label">Nome:</label>
                   <div class="controls">
@@ -93,7 +91,7 @@ if($_POST['salvar']){
                 </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-5">
             	<div class="form-group">
                   <label class="control-label">E-mail:</label>
                   <div class="controls">

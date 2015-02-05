@@ -3,9 +3,7 @@
 // vamos apenas atualizar a base de dados de 10 em 10 minutos.
 // Desta forma, se um usuário permanecer no site por 30 minutos,
 // será registado três vezes na tabela.
-global $wpdb;
-
-$wls_curriculo_options 	= $wpdb->prefix . 'wls_curriculo_options';
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
  
 $assunto_cadastro 		= @$_POST['assunto_cadastro'];
 $mensagem_cadastro 		= @$_POST['mensagem_cadastro'];

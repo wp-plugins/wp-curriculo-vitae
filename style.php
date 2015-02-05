@@ -1,4 +1,5 @@
 <?php
+
 wp_enqueue_style("wpcvf_lightboxcssa", plugins_url('css/wpcvf_lightbox.css', __FILE__) );
 wp_enqueue_style("wpcvf_style", plugins_url('css/wp_curriculo_style.css', __FILE__));
 wp_enqueue_style('wpcvf_bootstrap', plugins_url('css/bootstrap.min.css', __FILE__));

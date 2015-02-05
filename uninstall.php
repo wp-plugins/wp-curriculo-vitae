@@ -7,11 +7,7 @@
  
 
 // Acesso ao objeto global de gestão de bases de dados
-global $wpdb;
-
-$wls_curriculo 					    = $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						      = $wpdb->prefix . 'wls_areas';
-$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 
 // Vamos checar se a nova tabela existe

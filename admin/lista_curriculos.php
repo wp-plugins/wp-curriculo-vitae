@@ -1,13 +1,6 @@
 <?php
 
-global $wpdb;
-
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
-
-include_once( plugin_dir_path( __FILE__ ) . 'include/funcoes.php' );	
-	
-$table = $wpdb->prefix."wls_curriculo";
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 $pg = $_GET['pg'];
 
@@ -23,12 +16,8 @@ if($buscar){
 
 
 ########### Função para excluir registro
-
-
 if(isset($_POST['excl'])){
-	foreach($_POST['excl'] as $regExcl){
-		delete($regExcl, $wls_curriculo );
-	}	
+  $wpcvf->deleteTable($_POST['excl'], $wls_curriculo );
 }
 
 //######### INICIO Paginação
@@ -43,21 +32,22 @@ $inicial = $pg * $numreg;
 $sql = "SELECT a.*,
 			   b.area
 		
-		FROM ".$wpdb->prefix."wls_curriculo a
+		FROM ".$wls_curriculo." a
 		
-			left join ".$wpdb->prefix."wls_areas b
+			left join ".$wls_areas." b
 				on a.id_area = b.id
 		
 		where 1=1 $where order by a.nome asc LIMIT $inicial, $numreg ";
 		
-$query = $wpdb->get_results( $sql );
+$query      = $wpdb->get_results( $sql );
+$rowsCurr   = $wpdb->num_rows;
 
 $sqlRow = "SELECT a.*,
 				  b.area
 		   
-		   FROM ".$wpdb->prefix."wls_curriculo a
+		   FROM ".$wls_curriculo." a
 		   
-		   		left join ".$wpdb->prefix."wls_areas b
+		   		left join ".$wls_areas." b
 					on a.id_area = b.id
 		   
 		   where 1=1 $where order by a.nome asc";
@@ -84,18 +74,18 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
       
       <div style="clear:both;"></div>
       
-	  <?php if(@$_GET['msg']==2){ ?>
+  	  <?php if(@$_GET['msg']==2){ ?>
 
-          <div class="alert alert-success" style="text-align:center;">Atualizado com sucesso!</div>	
-  
-	  <?php }elseif(@$_GET['msg']==3){ ?>
+            <div class="alert alert-success" style="text-align:center;">Atualizado com sucesso!</div>	
+    
+  	  <?php }elseif(@$_GET['msg']==3){ ?>
 
-          <div class="alert alert-success" style="text-align:center;">Registro deletado com sucesso!</div>	
+            <div class="alert alert-success" style="text-align:center;">Registro deletado com sucesso!</div>	
           
       <?php }?>
       
-      <div  style="float:right; margin:30px 15px 15px 0;">
-      	<img src="<?php echo plugins_url('../img/wp-cv-delete.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
+      <div class="link-del-reg">
+      	<img src="<?php echo plugins_url('../img/cross.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." style="margin-bottom: 1px;" />
         <a href="javascript:registros.submit();">Excluir registro</a>
       </div>      
       
@@ -105,9 +95,9 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
             <th>Nome</th>
             <th>Descrição</th>
             <th>Área de serviço</th>
-            <th width="60">E-mail</th>
-            <th width="50">Arquivo</th>
-            <th width="30">Editar</th>
+            <th width="60" style="text-align:center;">E-mail</th>
+            <th width="50" style="text-align:center;">Arquivo</th>
+            <th width="30" style="text-align:center;">Editar</th>
             <th width="30" style="text-align:center;"><input type="checkbox" id="checkAll" /></th>
           </tr>
         </thead>
@@ -118,22 +108,22 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
           	foreach($query as $k => $v){
             //print_r($v);
 			
-			if($v->estado_civil==1){
-				$civil = "Solteiro(a)";
-			}elseif($v->estado_civil==2){
-				$civil = "Viuvo(a)";
-			}elseif($v->estado_civil==3){
-				$civil = "Casado(a)";
-			}elseif($v->estado_civil==4){
-				$civil = "Divorciado(a)";
-			}elseif($v->estado_civil==5){
-				$civil = "Amigável";
-			}
-        ?>
+        			if($v->estado_civil==1){
+        				$civil = "Solteiro(a)";
+        			}elseif($v->estado_civil==2){
+        				$civil = "Viuvo(a)";
+        			}elseif($v->estado_civil==3){
+        				$civil = "Casado(a)";
+        			}elseif($v->estado_civil==4){
+        				$civil = "Divorciado(a)";
+        			}elseif($v->estado_civil==5){
+        				$civil = "Amigável";
+        			}
+                ?>
               <tr>
                 <td><?php echo $v->nome ?></td>
                 
-                <td ><a class="abrirDescricao" rel="<?php echo $x; ?>" style="cursor:pointer;" >Descrição completa</a><?php #echo $v->descricao ?></td>
+                <td ><a class="abrirDescricao" rel="<?php echo $x; ?>" style="cursor:pointer;" >Visualizar</a><?php #echo $v->descricao ?></td>
                 <div style="display:none" id="curriculo_<?php echo $x; ?>" class="wpcvf_lightbox_content">
                     <div class="wpcvcontent" style='display:none; padding:10px; background:#fff; width:570px;'>
                        
@@ -148,7 +138,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                             <strong>Skype:</strong> <?php echo $v->skype ?><br />
                             <strong>Estado cívil:</strong> <?php echo $civil ?>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <strong>Idade:</strong> <?php echo dataHora($v->idade, 6) ?><br />
+                            <strong>Idade:</strong> <?php echo $v->idade ?><br />
                             <strong>Área pretendida:</strong> <?php echo $v->area ?><br />
                             <strong>Remuneração:</strong> R$ <?php echo $v->remuneracao ?>
                         </p>
@@ -162,28 +152,38 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                         
                         <p>
                         	<strong>Descrição:</strong><br />
-							<?php echo nl2br($v->descricao) ?>
+							            <?php echo nl2br($v->descricao) ?>
                         </p>
                         
+
+                        <img src="<?php echo plugins_url('../img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> 
                         <a href="mailto:<?php echo $v->email?>" target="_blank">
-                      		<img src="<?php echo plugins_url('../img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> <?php echo $v->email?>
+                      		 <?php echo $v->email?>
                         </a><br />
                         
-                        <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
+                        <?php if($v->curriculo != ""){ ?>
+                          <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
+                        <?php  }?>
                     </div>
                 </div>
                 
                 <td><?php echo $v->area ?></td>
                 
-                <td style="text-align:center;"><a href="mailto:<?php echo $v->email?>" target="_blank">
-                <img src="<?php echo plugins_url('../img/email.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->email?>" /></a></td>
+                <td style="text-align:center;"><a href="mailto:<?php echo $v->email?>" target="_blank"><img src="<?php echo plugins_url('../img/email.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->email?>" /></a></td>
                 
-                <td style="text-align:center;"><a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('../img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a></td>
+                <td style="text-align:center;">
+                  <?php if($v->curriculo != ""){ ?>
+                            <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('../img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a>
+                  <?php  }else{ ?>
+                            -
+                  <?php  } ?>
+                  
+                </td>
                 
                 <td style="text-align:center;">
                 	
                     <a href="?page=formulario-admin&id_cadastro=<?php echo $v->id?>" >
-                      <img src="<?php echo plugins_url('../img/wp-cv-edit.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->nome?>" style="padding:0;" /></a><br />
+                      <img src="<?php echo plugins_url('../img/user_edit.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->nome?>" style="padding:0;" /></a><br />
                     
                 </td>
                 
@@ -198,6 +198,10 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
         </tbody>
       </table>
       
+      <span style="position: relative; top: -15px;"><?php echo 'Existe <strong>' . $rowsCurr . '</strong> ' . ($rowsCurr<=1?'currículo cadastrado.':'currículos cadastrados.'); ?></span>
+
+      <div style="clear:both;">
+
       <?php include( plugin_dir_path( __FILE__ ) . '../classes/paginacao2.php' ); ?>
       
     </div>

@@ -1,11 +1,7 @@
 <?php
-global $wpdb;
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 $id_cadastro = @$_GET['id_cadastro'];
-
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
-$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 
 #print_r($_POST);
 if(isset($_POST['cadastrar'])){
@@ -15,9 +11,9 @@ if(isset($_POST['cadastrar'])){
 $dado = $wpdb->get_row("SELECT a.*,
 								 b.area
 						  
-						  FROM ".$wpdb->prefix."wls_curriculo a
+						  FROM ".$wls_curriculo." a
 						  
-							  left join ".$wpdb->prefix."wls_areas b
+							  left join ".$wls_areas." b
 								  on a.id_area = b.id
 						  
 						  where a.id = '".@$id_cadastro."'", ARRAY_A);
@@ -67,7 +63,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
     <div class="container-fluid">
         	<?php /*?><h4><b>Dados Pessoais</b></h4><? */ ?>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="control-label">Nome:</label>
                   <div class="controls">
@@ -128,7 +124,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label class="control-label">E-mail:</label>
                   <div class="controls">
@@ -136,7 +132,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   </div>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label class="control-label">Skype:</label>
                   <div class="controls">
@@ -146,7 +142,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-10">
                 <div class="form-group">
                   <label class="control-label">Site/Blog:</label>
                   <div class="controls">
@@ -156,7 +152,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <div class="form-group">
                 
                 <?php
@@ -177,7 +173,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <div class="form-group" id="campoArea" style="display:none;">
                   <label class="control-label">Escreva sua &aacute;rea:</label>
                   <div class="controls">
@@ -194,21 +190,21 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   <div class="controls">
                     
                     <div class="row">
-                      <div class="col-md-11">
+                      <div class="col-md-9">
                         <input type="text" class="form-control pull-left" name="cpf" id="cpf" value="<?php echo @$dado['cpf'];?>">
                       </div>
                       <div class="col-md-1">
-                        <img id="tick" src="<?php echo plugins_url('../img/wp-cv-correto.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
-                        <img id="cross" src="<?php echo plugins_url('../img/wp-cv-incorreto.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
+                        <img id="tick" src="<?php echo plugins_url('../img/tick.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
+                        <img id="cross" src="<?php echo plugins_url('../img/cross.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
                       </div>
                     </div>
-                    <span id="msgCpf">Só é permitido um CPF por cadastro.</span>
+                    <span id="msgCpf">CPF já está cadastrado.</span>
                     
                   </div>
                     
                 </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label class="control-label">Remunera&ccedil;&atilde;o:</label>
                   <div class="controls">
@@ -243,7 +239,9 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   </div>
                 </div>
               </div>
-              <div class="col-md-5">
+            </div>
+            <div class="row">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label class="control-label">Bairro:</label>
                   <div class="controls">
@@ -251,9 +249,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-11">
+              <div class="col-md-5">
                 <div class="form-group">
                   <label class="control-label">Cidade:</label>
                   <div class="controls">
@@ -271,7 +267,7 @@ wp_enqueue_script('wpcva_script', plugins_url('js/script.js', __FILE__));
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-10">
                 <div class="form-group">
                   <label class="control-label">Descri&ccedil;&atilde;o:</label>
                   <div class="controls">

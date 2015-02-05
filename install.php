@@ -1,14 +1,11 @@
 <?php
 #define('DISALLOW_FILE_EDIT', true );
 // Acesso ao objeto global de gestão de bases de dados
-global $wpdb;
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 // Vamos checar se a nova tabela existe
 // A propriedade prefix é o prefixo de tabela escolhido na
 // instalação do WordPress
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
-$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 
 
 // Se a tabela não existe vamos criá-la
@@ -30,10 +27,7 @@ $wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 				  idade 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
 				  sexo 			int(11) 		DEFAULT NULL,
 				  remuneracao 	varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
-				  
-				  login 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
-				  senha 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
-				  
+				  				  
 				  rua 			varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
 				  numero 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
 				  bairro 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
@@ -48,6 +42,8 @@ $wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 				  PRIMARY KEY (id)
 			);";
   }
+  $wpdb->get_row("ALTER TABLE ".$wls_curriculo." DROP COLUMN login", ARRAY_A);
+  $wpdb->get_row("ALTER TABLE ".$wls_curriculo." DROP COLUMN senha", ARRAY_A);
 		
   if ( $wpdb->get_var( "SHOW TABLES LIKE '".$wls_areas."'" ) != $wls_areas ) {	  		  
 	
@@ -121,10 +117,8 @@ $wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 	}
 		
 	$sql3 ="	
-		CREATE TABLE ".$wpdb->prefix."wls_curriculo LIKE wls_curriculo;
-		CREATE TABLE ".$wpdb->prefix."wls_areas LIKE wls_areas;
-		
-		";
+		CREATE TABLE ".$wls_curriculo."wls_curriculo LIKE wls_curriculo;
+		CREATE TABLE ".$wls_areas."wls_areas LIKE wls_areas;		";
 		
 				
 		#$update = $wpdb->query( "UPDATE wls_curriculo SET curriculo = file" );

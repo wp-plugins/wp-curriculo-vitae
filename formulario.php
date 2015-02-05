@@ -1,12 +1,12 @@
 <?php
 
-global $wpdb;
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 if(isset($_POST['cadastrar'])){
 	include_once( plugin_dir_path( __FILE__ ) . 'admin/include/enviarCadastro.php' );
 }
 
-$sqlF = "SELECT * FROM ".$wpdb->prefix."wls_curriculo where id = '".@$_SESSION['id_cadastro']."'";
+$sqlF = "SELECT * FROM ".$wls_curriculo." where id = '".@$_SESSION['id_cadastro']."'";
 			
 $queryF = $wpdb->get_results( $sqlF, ARRAY_A );
 foreach($queryF as $kF => $vF){
@@ -61,8 +61,8 @@ foreach($queryF as $kF => $vF){
               <div class="controls">
                 <select class="form-control" name="sexo">
                   <option></option>	
-                  <option value="0" 	<?php echo @$dadosF['sexo']=="0"?"selected":"" ?> 	>Feminino</option>
-                  <option value="1" 	<?php echo @$dadosF['sexo']=="1"?"selected":""?>	>Masculino</option>
+                  <option value="0" 	<?php echo @$dadosF['sexo']=="0"?"selected":"" ?> >Feminino</option>
+                  <option value="1" 	<?php echo @$dadosF['sexo']=="1"?"selected":""?> >Masculino</option>
                 </select>
               </div>
             </div>
@@ -93,7 +93,7 @@ foreach($queryF as $kF => $vF){
     </div>
     
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
         	<div class="form-group">
               <label class="control-label">Telefone:</label>
               <div class="controls">
@@ -101,7 +101,7 @@ foreach($queryF as $kF => $vF){
               </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
         	<div class="form-group">
               <label class="control-label">Celular:</label>
               <div class="controls">
@@ -114,7 +114,7 @@ foreach($queryF as $kF => $vF){
     <div class="form-group">
       <label class="control-label">Email:</label>
       <div class="controls">
-        <input type="email" name="email" value="<?php echo @$dadosF['email']?>" class="form-control"> 
+        <input type="email" name="email" value="<?php echo @$dadosF['email']?>" class="form-control" style="padding: 0px 12px;"> 
       </div>
     </div>
     
@@ -137,7 +137,7 @@ foreach($queryF as $kF => $vF){
         	<div class="form-group">
 			  <?php              
 				  
-                  $sqlArea = "SELECT * FROM ".$wpdb->prefix."wls_areas where 1=1 group by area";
+                  $sqlArea = "SELECT * FROM ".$wls_areas." where 1=1 group by area";
                   $queryArea = $wpdb->get_results( $sqlArea );
               ?>
               <label class="control-label">Área pretendida:</label>
@@ -170,26 +170,26 @@ foreach($queryF as $kF => $vF){
     </div>
 	
     <div class="row">
-    	<div class="col-md-6">
+    	<div class="col-md-5">
         	<div class="form-group">
               <label class="control-label">CPF:</label>
               <div class="controls">
               
               	<div class="row">
-                	<div class="col-md-10">
+                	  <div class="col-md-7">
                     	<input type="text" name="cpf" id="cpf" value="<?php echo @$dadosF['cpf']?>" class="form-control">
                     </div>
-                    <div class="col-md-2">
-                    	<img id="tick" src="<?php echo plugins_url('img/wp-cv-correto.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
-                		<img id="cross" src="<?php echo plugins_url('img/wp-cv-incorreto.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
+                    <div class="col-md-1">
+                    	<img id="tick" src="<?php echo plugins_url('img/tick.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
+                		<img id="cross" src="<?php echo plugins_url('img/cross.png', __FILE__) ?>" class="pull-left" width="16" height="16"/>
                     </div>
                 </div>
                
-                <span id="msgCpf">Só é permitido um cadastro por CPF.</span>
+                <span id="msgCpf">CPF já está cadastrado.</span>
               </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
         	<div class="form-group cep">
               <label class="control-label">CEP:</label>
               <div class="controls">
@@ -201,7 +201,7 @@ foreach($queryF as $kF => $vF){
     </div>
     
     <div class="row">
-    	<div class="col-md-10">
+    	<div class="col-md-8">
         	<div class="form-group rua">
             <label class="control-label">Rua:</label>
             <div class="controls">
@@ -227,7 +227,7 @@ foreach($queryF as $kF => $vF){
     </div>
     
     <div class="row">
-    	<div class="col-md-10">
+    	<div class="col-md-8">
         	<div class="form-group cidade">
               <label class="control-label">Cidade:</label>
               <div class="controls">

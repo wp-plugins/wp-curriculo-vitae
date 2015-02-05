@@ -1,9 +1,6 @@
 <?php
 
-global $wpdb;
-
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 include_once( plugin_dir_path( __FILE__ ) . 'include/funcoes.php' );	
 
@@ -40,7 +37,7 @@ if(isset($_POST["cadastrar"])){
 	$proto = strtolower(preg_replace('/[^a-zA-Z]/','',$_SERVER['SERVER_PROTOCOL'])); //pegando só o que for letra 
 	$location = $proto.'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	
-	$path = removeMsg($location);
+	$path = $wpcvf->removeMsg($location);
 	
 	$sql = "SELECT * FROM ".$wls_areas ." where area = '".$area."'  ";
 	$query = $wpdb->get_results( $sql );
@@ -92,7 +89,7 @@ if(isset($_GET['msg'])){
     
     <form method="post">
       <div class="row">
-      	<div class="col-md-6">
+      	<div class="col-md-5">
         	<div class="form-group">
               <label class="control-label">Cadastrar uma nova área:</label>
               <div class="controls">
@@ -100,7 +97,7 @@ if(isset($_GET['msg'])){
               </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
         	<button type="submit" name="cadastrar" class="btn bt_area pull-left btn-primary">Cadastrar</button>
         </div>
       </div>
@@ -118,9 +115,10 @@ if(isset($_GET['msg'])){
 		$inicial = $pg * $numreg;
 		//######### FIM dados Paginação
 
-		$sql = "SELECT * FROM ".$wls_areas." where 1=1 group by area order by area asc LIMIT $inicial, $numreg";
-		$query = @$wpdb->get_results( @$sql );
-				
+		$sql 		= "SELECT * FROM ".$wls_areas." where 1=1 group by area order by area asc LIMIT $inicial, $numreg";
+		$query 		= @$wpdb->get_results( @$sql );
+		$rowsAreas 	= $wpdb->num_rows;
+
 		$sqlRow = "SELECT * FROM ".$wls_areas." where 1=1 group by area order by area asc ";
 		$queryRow = $wpdb->get_results( $sqlRow );
 		$quantreg = $wpdb->num_rows; // Quantidade de registros pra paginação
@@ -134,12 +132,13 @@ if(isset($_GET['msg'])){
             	<div class="alert alert-success" style="text-align:center;">Área deletado com sucesso!</div>
             <?php }?>
             
-            <div  style="float:right; margin:30px 15px 15px 0;">
-              <img src="<?php echo plugins_url('../img/cross.png', __FILE__) ?>" width="16" height="16" alt="Exportar emails em XML." />
+            
+            
+            <p style="bottom: -27px; position: relative;"><strong><span style="color:red;">*</span>Para editar a área de serviço clique no nome que deseja alterar.</strong></p>
+            <div class="link-del-reg">
+              <img src="<?php echo plugins_url('../img/cross.png', __FILE__) ?>" width="16" height="16" alt="Excluir registro" style="margin-bottom: 1px;" />
               <a href="javascript:registros.submit();">Excluir registro</a>
             </div>
-            
-            <p>Para editar a área de serviço clique no nome que deseja alterar.</p>
     		<form action="" method="post">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                   <thead>
@@ -168,6 +167,9 @@ if(isset($_GET['msg'])){
                   </tbody>
                 </table>
             </form>
+            <span style="position: relative; top: -15px;"><?php echo 'Existe <strong>' . $rowsAreas . '</strong> ' . ($rowsAreas<=1?'área de serviço cadastrada.':'áreas de serviços cadastradas.'); ?></span>
+
+            <div style="clear:both;">
             
 		<?php }else{ ?>
         

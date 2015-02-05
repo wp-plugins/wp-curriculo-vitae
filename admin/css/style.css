@@ -4,6 +4,8 @@ select{ height:34px !important; }
 #tick{ width:16px; height:16px; float: left; margin: 9px 0 0 -20px; display:none; color:#0F0; }
 #cross{ width:16px; height:16px; float: left; margin: 9px 0 0 -20px; display:none; color:#F00; }
 
+.alert{padding: 10px;}
+
 select{ height:34px; }
 
 .removerFormacao{ margin-left: -15px; }
@@ -15,7 +17,9 @@ select{ height:34px; }
 .removerCursoPalestra{ margin-left: -15px; }
 .adicionarNovaCursoPalestra{ margin-top: -60px; }
 
-.bt_area{ margin: 25px 0 0 0; }
+.bt_area{ margin: 23px 0 0 -10px; }
+
+.link-del-reg{float:right; margin:0px 15px 0px 0; position: relative; bottom: 5px;}
 
 .bt_novo{ border-radius:5px;background: #e0e0e0; font-size:12px; /*height:28px; width:90px;*/ padding:5px; float:left; margin-top: 12px;margin-left: 15px; color: #0074a2; font-weight:bold; text-decoration:none; }
 .bt_novo:hover{ background: #2ea2cc; color: #fff; text-decoration:none; }

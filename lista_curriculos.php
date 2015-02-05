@@ -1,15 +1,12 @@
 <?php
 
-global $wpdb;
-
-include_once( plugin_dir_path( __FILE__ ) . 'admin/include/funcoes.php' );	
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 	
 $pg = $_GET['pg'];
 
-echo $buscar = @$_POST['buscar'];
-echo $bairro = @$_POST['bairro'];
-echo $cidade = @$_POST['cidade'];
-echo $estado = @$_POST['estado'];
+foreach ($_POST as $key=>$value){
+  ${$key} = $value;
+}
 
 $where = "";
 
@@ -43,9 +40,9 @@ $inicial = $pg * $numreg;
 $sql = "SELECT a.*,
 			   b.area
 		
-		FROM ".$wpdb->prefix."wls_curriculo a
+		FROM ".$wls_curriculo." a
 		
-			left join ".$wpdb->prefix."wls_areas b
+			left join ".$wls_areas." b
 				on a.id_area = b.id
 		
 		where 1=1 $where order by a.nome asc LIMIT $inicial, $numreg ";
@@ -55,9 +52,9 @@ $query = $wpdb->get_results( $sql );
 $sqlRow = "SELECT a.*,
 				  b.area
 		   
-		   FROM ".$wpdb->prefix."wls_curriculo a
+		   FROM ".$wls_curriculo." a
 		   
-		   		left join ".$wpdb->prefix."wls_areas b
+		   		left join ".$wls_areas." b
 					on a.id_area = b.id
 		   
 		   where 1=1 $where order by a.nome asc";
@@ -84,7 +81,7 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
                 <option value="">Selecione o estado</option>
                 <?php
               
-                    $sqlEstado = "SELECT estado FROM ".$wpdb->prefix."wls_curriculo where 1=1 group by estado order by estado";
+                    $sqlEstado = "SELECT estado FROM ".$wls_curriculo." where 1=1 group by estado order by estado";
                     $queryEstado = $wpdb->get_results( $sqlEstado );
                 ?>
                 <?php foreach($queryEstado as $kE => $vE){?>
@@ -145,7 +142,7 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
                   <td><?php echo $v->nome ?></td>
                   
                   <td>
-                  	<a class="abrirDescricao" rel="<?php echo $x; ?>" style="cursor:pointer;" >Descrição completa</a>
+                  	<a class="abrirDescricao" rel="<?php echo $x; ?>" style="cursor:pointer;" >Visualizar</a>
                     <div style="display:none" class="wpcvf_lightbox_content" id="curriculo_<?php echo $x; ?>">
                         <div class="wpcvcontent" style='padding:10px; background:#fff;'>
                            
@@ -161,7 +158,7 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
                                 <strong>Skype:</strong> <?php echo $v->skype ?><br />
                                 <strong>Estado cívil:</strong> <?php echo $civil ?>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <strong>Idade:</strong> <?php echo dataHora($v->idade, 6) ?><br />
+                                <strong>Idade:</strong> <?php echo $v->idade ?><br />
                                 <strong>Área pretendida:</strong> <?php echo $v->area ?><br />
                                 <strong>Remuneração:</strong> R$ <?php echo $v->remuneracao ?>
                             </p>
@@ -178,11 +175,15 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
                                 <?php echo nl2br($v->descricao) ?>
                             </p>
                             
+                            <img src="<?php echo plugins_url('img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> 
                             <a href="mailto:<?php echo $v->email?>" target="_blank">
-                                <img src="<?php echo plugins_url('img/email.png', __FILE__)?>" width="16" height="16" alt="<?php echo $v->email?>" /> <?php echo $v->email?>
+                                <?php echo $v->email?>
                             </a><br />
                             
-                            <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
+                            
+                            <?php if($v->curriculo != ""){ ?>
+                              <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" >Baixar currículo</a>
+                            <?php  }?>
                         </div>
                     </div>
                   </td>
@@ -192,7 +193,14 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
                   <td style="text-align:center;"><a href="mailto:<?php echo $v->email?>" target="_blank">
                   <img src="<?php echo plugins_url('img/email.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->email?>" /></a></td>
                   
-                  <td style="text-align:center;"><a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a></td>
+                  <td style="text-align:center;">
+                    <?php if($v->curriculo != ""){ ?>
+                              <a href="<?php echo content_url( 'uploads/curriculos/'.$v->curriculo); ?>" target="_blank" > <img src="<?php echo plugins_url('../img/page_white_text.png', __FILE__) ?>" width="16" height="16" alt="<?php echo $v->curriculo?>" /></a>
+                    <?php  }else{ ?>
+                              -
+                    <?php  } ?>
+                    
+                  </td>
                   
                 </tr>
                 

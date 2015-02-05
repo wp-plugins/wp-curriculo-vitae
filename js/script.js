@@ -1,8 +1,36 @@
 (function ($) {
-
-
-
 	$(document).ready(function(){
+
+		
+
+
+		/*alert($(".entry-content").width());*/
+
+		if($(".entry-content").width() <= 480){
+			/*alert("sim");*/
+			$(".col-md-4").css('width', '27%');
+			$(".col-md-5").css('width', '43.3%');
+			$(".col-md-8").css('width', '70%');
+		}else if($(".entry-content").width() <= 584){
+			$(".col-md-4").css('width', '28%');
+			$(".col-md-5").css('width', '44.7%');
+			$(".col-md-8").css('width', '72.3%');
+			
+		}else if($(".entry-content").width() <= 610){
+			$(".col-md-4").css('width', '33.3%');
+			$(".col-md-5").css('width', '50%');
+			$(".col-md-8").css('width', '83.3%');
+			
+		}else if($(".entry-content").width() <= 640){
+			$(".col-md-4").css('width', '28.5%');
+			$(".col-md-5").css('width', '45%');
+			$(".col-md-8").css('width', '73.3%');
+		}
+		else if($(".entry-content").width() <= 968){
+			$(".col-md-4").css('width', '30.2%');
+			$(".col-md-5").css('width', '46.8%');
+			$(".col-md-8").css('width', '77%');
+		}
 		
 		$("span#wpcvf_linkEsqueceu").click(function(){
 					
@@ -19,9 +47,6 @@
 		});
 			
 		//Mascara para o campo CPF
-
-			
-		
 		if($("#cpf").length || $("#cep").length ){
 
 			$("#cpf").mask("999.999.999-99");

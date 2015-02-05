@@ -1,15 +1,11 @@
 <?php
 
-global $wpdb;
+global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 
 require_once (dirname( __FILE__ ).'/../../../../wp-includes/class-phpmailer.php');
 require_once (dirname( __FILE__ ).'/../../../../wp-includes/class-smtp.php');
 
 $cpf = $_POST['cpf'];
-
-$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
-$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
-$wls_areas 						= $wpdb->prefix . 'wls_areas';
 
 $sql = "SELECT a.*,
 			   b.area

@@ -3,7 +3,7 @@
 Plugin Name: WP-Currículo Vitae Free
 Plugin URI: http://wiliamluis.wordpress.com/plugin/
 Description: O WP-Curriculo Vitae e um plugin que permite que usuarios a cadastrem seu curriculo no site para divulgacao online ou para uso do site.
-Version: 4.5.7
+Version: 4.5.8
 Author: William Luis da Silva
 Author URI: http://www.williamluis.com.br/wp-cv-demonstracao/
 License: GPLv2
@@ -16,6 +16,13 @@ License: GPLv2
 // poderá vir a sofrer tempos de resposta maiores, pois irá guardar
 // muitos dados na base de dados.
 
+
+include_once( plugin_dir_path( __FILE__ ) . 'admin/include/class.wpwls.php' );	
+$wpcvf = new WpWls();
+
+$wls_curriculo 					= $wpdb->prefix . 'wls_curriculo';
+$wls_areas 						= $wpdb->prefix . 'wls_areas';
+$wls_curriculo_options 			= $wpdb->prefix . 'wls_curriculo_options';
 
 // Registamos a função para correr na ativação do plugin
 register_activation_hook( __FILE__, 'wpcvf_install' );
