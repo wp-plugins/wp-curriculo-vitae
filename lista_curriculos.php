@@ -116,8 +116,8 @@ include( plugin_dir_path( __FILE__ ) . 'classes/estados.php' );
               <th>Nome</th>
               <th>Descrição</th>
               <th>Área de serviço</th>
-              <th width="50">E-mail</th>
-              <th width="50">Arquivo</th>
+              <th width="50" style="text-align:center;">E-mail</th>
+              <th width="50" style="text-align:center;">Arquivo</th>
             </tr>
           </thead>
           <tbody>
