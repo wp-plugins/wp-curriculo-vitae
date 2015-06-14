@@ -143,6 +143,7 @@ if($_FILES['curriculo']['name']){
 	  $id_cadastro = $wpdb->insert_id;
 	  
 	  include(dirname(__FILE__)."/../../emails/cadastro.php");
+	  include(dirname(__FILE__)."/../../emails/cadastro_admin.php");
 	  
   }elseif(@$_POST['mod']=="edit"){
 	  

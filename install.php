@@ -65,6 +65,8 @@ global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 			id 						int(11) 		NOT NULL AUTO_INCREMENT,
 			assunto_cadastro 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
 			mensagem_cadastro 		text 			COLLATE latin1_bin,
+			assunto_cadastro_admin 	varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
+			mensagem_cadastro_admin text 			COLLATE latin1_bin,
 			assunto_aprovacao 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
 			mensagem_aprovacao 		text 			COLLATE latin1_bin,
 			assunto_esqueceu 		varchar(255) 	COLLATE latin1_bin DEFAULT NULL,
@@ -82,6 +84,9 @@ global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 			PRIMARY KEY (id)
 		);";
   	}
+
+  	$wpdb->get_row("ALTER TABLE ".$wls_curriculo_options." ADD assunto_cadastro_admin varchar(255) DEFAULT NULL AFTER mensagem_cadastro", ARRAY_A);
+  	$wpdb->get_row("ALTER TABLE ".$wls_curriculo_options." ADD mensagem_cadastro_admin text DEFAULT NULL AFTER assunto_cadastro_admin", ARRAY_A);
 	
 	$sqlOp = "SELECT * FROM ".$wls_curriculo_options." where id=1";
 		
@@ -95,21 +100,18 @@ global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 		$assunto_cadastro 	= "Seu currículo foi cadastrado com sucesso!";
 		$mensagem_cadastro 	= "Seu Currículo foi cadastrado com sucesso!<br/>\n";
 		
-		$assunto_aprovado	= "Seu currículo foi aprovado!";
-		$mensagem_aprovado	= "Seu currículo foi aprovado";
+		$assunto_cadastro_admin 	= "Novo currículo cadastrado";
+		$mensagem_cadastro_admin 	= "Nome: @nome <br/>
+			Área de serviço: @area";
 		
-		$assunto_esqueceu	= "Nova senha foi gerada";
-		$mensagem_esqueceu	= "Olá @nome, tudo bem?\n<br/>
 		
-		Sua nova senha é: @senha";
 		
 		$varOptions = array(
 		  'assunto_cadastro' 	=> $assunto_cadastro,
 		  'mensagem_cadastro' 	=> $mensagem_cadastro,
-		  'assunto_aprovacao'	=> $assunto_aprovado,
-		  'mensagem_aprovacao'	=> $mensagem_aprovado,		  
-		  'assunto_esqueceu'	=> $assunto_esqueceu,
-		  'mensagem_esqueceu'	=> $mensagem_esqueceu,		  
+		  'assunto_cadastro_admin' 	=> $assunto_cadastro_admin,
+		  'mensagem_cadastro_admin' => $mensagem_cadastro_admin,
+		  
 		  
 		);
 		

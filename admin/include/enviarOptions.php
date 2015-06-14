@@ -8,6 +8,9 @@ global $wpdb, $wpcvf, $wls_curriculo, $wls_areas, $wls_curriculo_options;
 $assunto_cadastro 		= @$_POST['assunto_cadastro'];
 $mensagem_cadastro 		= @$_POST['mensagem_cadastro'];
 
+$assunto_cadastro_admin			= @$_POST['assunto_cadastro_admin'];
+$mensagem_cadastro_admin 		= @$_POST['mensagem_cadastro_admin'];
+
 $nome					= @$_POST['nome']; 
 $email					= @$_POST['email']; 
 
@@ -18,7 +21,9 @@ $email					= @$_POST['email'];
 $var = array(
   
   'assunto_cadastro'		=> $assunto_cadastro,	
-  'mensagem_cadastro'		=> $mensagem_cadastro,	
+  'mensagem_cadastro'		=> $mensagem_cadastro,
+  'assunto_cadastro_admin'		=> $assunto_cadastro_admin,	
+  'mensagem_cadastro_admin'		=> $mensagem_cadastro_admin,		
   
   #'tipo_envio' 				=> $tipo_envio,
   'nome' 					=> $nome,

@@ -77,6 +77,25 @@ if($_POST['salvar']){
             <?php wp_editor( $dadosOp['mensagem_cadastro'], 'wpa_mensagem_cadastro', $settings = array('textarea_name' => mensagem_cadastro) ); ?>
           </div>
         </div>
+
+        <h3>Configura&ccedil;&otilde;es de e-mail cadastro para o admin</h3>
+    
+        <div class="form-group">
+          <label class="control-label cep">Assunto:</label>
+          <div class="controls">
+            <input type="text" name="assunto_cadastro_admin" id="assunto_cadastro_admin" value="<?php echo $dadosOp['assunto_cadastro_admin'];?>" class="form-control" /> 
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="control-label cep">Mensagem:</label>
+          <div class="controls">
+            <?php /*<textarea name="mensagem_cadastro_admin" class="form-control" id="wpcvp_mensagem_cadastro_admin"><?php echo $dadosOp['mensagem_cadastro_admin'];?></textarea> */?>
+            
+            <?php wp_editor( $dadosOp['mensagem_cadastro_admin'], 'wpcvp_mensagem_cadastro_admin', $settings = array('textarea_name' => mensagem_cadastro_admin) ); ?>
+            
+          </div>
+        </div>
     		
         <h3>Personalizar configura&ccedil;&otilde;es de remetente</h3>
         
